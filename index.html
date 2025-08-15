@@ -34,7 +34,7 @@
 
     <nav class="bg-slate-900 fixed top-0 left-0 w-full z-50">
         <div class="flex flex-wrap max-w-screen-xl items-center justify-between mx-auto p-4 text-slate-400">
-            <a href="#" class="hidden w-full md:block md:w-auto">
+            <a href="/" class="hidden w-full md:block md:w-auto">
                 <span class="self-center text-2xl font-medium whitespace-nowrap">Khoirony Arief</span>
             </a>
 
@@ -71,8 +71,8 @@
         </div>
     </nav>
   
-    <section>
-        <div class="flex items-center max-w-screen-sm mx-auto pt-44 md:py-0 md:min-h-screen md:px-5 px-6">
+    <section class="overflow-hidden">
+        <div class="flex items-center md:max-w-screen-sm mx-auto pt-44 md:py-0 md:min-h-screen md:px-5 px-6">
             <div class="w-full mx-auto text-center">
                 <h1 class="font-bold md:text-6xl text-4xl md:mb-10 mb-5">
                     <span id="typing"></span>
@@ -81,7 +81,7 @@
                 <p class="font-light text-base md:text-xl mb-10">
                     I'm a software engineer based in Bandung, Indonesia, working for a Malaysian property company. I’m passionate about crafting impactful software and have contributed to projects that help shape the way people interact with property technology. <br>wanna discuss about something?
                 </p>
-                <div class="mt-20 flex justify-center gap-5 px-8"> 
+                <div class="mt-20 flex justify-center gap-5 md:px-8"> 
                     <a href="#contact" class="flex-1 rounded-full py-3 md:text-base text-sm bg-blue-500 text-white transition-all duration-300 hover:bg-blue-600 hover:-translate-y-1">
                         Let's Talk!
                     </a>
@@ -135,46 +135,48 @@
         window.onload = typeWriter;
     </script>
 
-<section id="about" class="max-w-screen-lg mx-auto px-8">
-    <div class="py-16"></div>
+    <section id="about" class="max-w-screen-lg mx-auto px-8">
+        <div class="py-16"></div>
 
-    <div data-aos="fade-up">
-        <h1 class="text-4xl font-semibold">/ about me</h1>
-    </div>
-
-    <br><br>
-    <div class="flex flex-col md:flex-row items-start md:gap-10">
-
-        <div class="hidden md:flex w-1/3" data-aos="fade-right" data-aos-delay="200">
-            <img src="/src/img/rony.jpg" alt="Foto Rony" class="rounded-lg object-cover">
+        <div data-aos="fade-up">
+            <h1 class="text-4xl font-semibold">/ about me</h1>
         </div>
 
-        <div class="md:w-2/3 w-full" data-aos="fade-left" data-aos-delay="300">
-            <span class="font-light">
-                I am currently a Software Engineer at Far Capital, Working in PropertyHub, Bachelor of Informatics Engineering, have experience 3 years as a web developer, currently stack is <span class="font-semibold">Tailwind, AlpineJs, Laravel, Livewire</span> a.k.a <span class="font-semibold">TALL Stack</span> and <span class="font-semibold">Bubble.io.</span> <br><br>
+        <br><br>
+        <div class="flex flex-col md:flex-row items-start md:gap-10">
 
-                Fast Learner, Enjoy learning new things, especially in the programming fields and wants to become a professional software developer.
+            <div class="hidden md:flex w-1/3" data-aos="fade-right" data-aos-delay="200">
+                <img src="/src/img/rony.jpg" alt="Foto Rony" class="rounded-lg object-cover">
+            </div>
+
+            <div class="md:w-2/3 w-full" data-aos="fade-left" data-aos-delay="300">
+                <span class="font-light">
+                    I am currently a Software Engineer at Far Capital, Working in PropertyHub, Bachelor of Informatics Engineering, have experience 3 years as a web developer, currently stack is <span class="font-semibold">Tailwind, AlpineJs, Laravel, Livewire</span> a.k.a <span class="font-semibold">TALL Stack</span> and <span class="font-semibold">Bubble.io.</span> <br><br>
+
+                    Fast Learner, Enjoy learning new things, especially in the programming fields and wants to become a professional software developer.
+                    <br><br>
+                    And outside of work, I am also interested in Gym, Economics, and Game Dev.
+                </span>
                 <br><br>
-                And outside of work, I am also interested in Gym, Economics, and Game Dev.
-            </span>
-            <br><br>
-            <div class="flex justify-center">
-                <a href="src/docs/Khoirony Arief.pdf" class="rounded-full py-3 px-8 bg-red-600 text-white transition-all duration-300 hover:bg-red-600 hover:-translate-y-1">
-                    Download pdf CV
-                </a>
+                <div class="flex justify-center">
+                    <a href="src/docs/Khoirony Arief.pdf" class="rounded-full py-3 px-8 bg-red-600 text-white transition-all duration-300 hover:bg-red-600 hover:-translate-y-1">
+                        Download pdf CV
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <section id="skill" class="max-w-screen-lg mx-auto px-8">
         <div class="py-16"></div>
-        <div class="flex">
-          <h1 class="text-4xl font-semibold mb-10">/ current skill</h1>
+    
+        <div class="flex" data-aos="fade-up">
+            <h1 class="text-4xl font-semibold mb-10">/ current skill</h1>
         </div>
-      
+    
         <div class="grid md:grid-cols-2 gap-4">
-            <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105">
+    
+            <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105" data-aos="fade-up">
                 <div class="flex items-center gap-3 mb-2">
                     <div class="py-2 px-3 bg-slate-600 text-blue-500 rounded-lg">
                         📦
@@ -183,8 +185,8 @@
                 </div>
                 <p class="text-slate-400">Laravel, Livewire, AlpineJS, Tailwind, Unity, MySQL</p>
             </div>
-        
-            <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105">
+    
+            <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105" data-aos="fade-up" data-aos-delay="100">
                 <div class="flex items-center gap-3 mb-2">
                     <div class="py-2 px-3 bg-slate-600 text-blue-500 rounded-lg">
                         ⚡
@@ -193,8 +195,8 @@
                 </div>
                 <p class="text-slate-400">Bubble, Make, n8n</p>
             </div>
-        
-            <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105">
+    
+            <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105" data-aos="fade-up" data-aos-delay="200">
                 <div class="flex items-center gap-3 mb-2">
                     <div class="py-2 px-3 bg-slate-600 text-blue-500 rounded-lg">
                         ☁️
@@ -203,8 +205,8 @@
                 </div>
                 <p class="text-slate-400">CI/CD, VPS, Docker, AWS S3, Third-Party Integrations</p>
             </div>
-        
-            <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105">
+    
+            <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105" data-aos="fade-up" data-aos-delay="300">
                 <div class="flex items-center gap-3 mb-2">
                     <div class="py-2 px-3 bg-slate-600 text-blue-500 rounded-lg">
                         💪
@@ -491,7 +493,7 @@
     <!-- End Of Contact Section -->
 
     <!-- Footer -->
-    <footer class="text-center font-light text-sm pb-5" id="footer">
+    <footer class="max-w-screen-lg mx-auto px-8 text-center font-light text-sm pb-5" id="footer">
         <p class="mb-1 text-base">
             Developed by Khoirony Arief
         </p>
