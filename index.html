@@ -1,23 +1,28 @@
 <!doctype html>
-<html lang="id" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khoirony Arief</title>
+    <meta name="description" content="Khoirony Arief – Software Engineer based in Bandung, Indonesia. Portfolio showcasing web development projects with Laravel, Livewire, and Tailwind.">
+    <meta name="author" content="Khoirony Arief">
+    <meta name="theme-color" content="#0f172a">
+    <meta property="og:title" content="Khoirony Arief – Software Engineer">
+    <meta property="og:description" content="Portfolio showcasing web development projects with Laravel, Livewire, and Tailwind.">
+    <meta property="og:type" content="website">
+    <title>Khoirony Arief – Software Engineer</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="icon" href="src/img/favicon.ico" type="image/x-icon">
 
-    <!-- Font From Google -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;500;700&family=Roboto:wght@900&display=swap"
-    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;500;700&family=Roboto:wght@900&display=swap" rel="stylesheet">
 
-    <!-- Icon From FontAwesome -->
+    <!-- FontAwesome Icons -->
     <script src="https://kit.fontawesome.com/c12c059ff2.js" crossorigin="anonymous"></script>
 
-    <!-- AOS -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- AOS (Animate On Scroll) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
 
     <style>
         .cursor {
@@ -32,7 +37,8 @@
 </head>
 <body class="font-poppins bg-slate-900 text-slate-400">
 
-    <nav class="bg-slate-900 fixed top-0 left-0 w-full z-50">
+    <!-- Navigation -->
+    <nav class="bg-slate-900 fixed top-0 left-0 w-full z-50" aria-label="Main navigation">
         <div class="flex flex-wrap max-w-screen-xl items-center justify-between mx-auto p-4 text-slate-400">
             <a href="/" class="hidden w-full md:block md:w-auto">
                 <span class="self-center text-2xl font-medium whitespace-nowrap">Khoirony Arief</span>
@@ -54,501 +60,455 @@
                     </li>
                 </ul>
             </div>
-            <div class="flex items-end w-full md:w-auto justify-end gap-3"> 
-                <a href="https://github.com/khoirony" target="_blank" class="hover:text-gray-100">
+
+            <div class="flex items-end w-full md:w-auto justify-end gap-3">
+                <a href="https://github.com/khoirony" target="_blank" rel="noopener noreferrer" class="hover:text-gray-100" aria-label="GitHub Profile">
                     <i class="fa-brands fa-github text-[20px]"></i>
                 </a>
-                <a href="https://instagram.com/khoirony_arief" target="_blank" class="hover:text-gray-100">
+                <a href="https://instagram.com/khoirony_arief" target="_blank" rel="noopener noreferrer" class="hover:text-gray-100" aria-label="Instagram Profile">
                     <i class="fa-brands fa-instagram text-[20px] font-bold"></i>
                 </a>
-                <a href="mailto:khoironyarief08@gmail.com" target="_blank" class="hover:text-gray-100">
+                <a href="mailto:khoironyarief08@gmail.com" class="hover:text-gray-100" aria-label="Send Email">
                     <i class="fa-solid fa-at text-[20px]"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/khoirony-arief/" target="_blank" class="hover:text-gray-100">
+                <a href="https://www.linkedin.com/in/khoirony-arief/" target="_blank" rel="noopener noreferrer" class="hover:text-gray-100" aria-label="LinkedIn Profile">
                     <i class="fa-brands fa-linkedin-in text-[20px]"></i>
                 </a>
             </div>
         </div>
     </nav>
-  
-    <section class="overflow-hidden">
-        <div class="flex items-center md:max-w-screen-sm mx-auto pt-44 md:py-0 md:min-h-screen md:px-5 px-6">
-            <div class="w-full mx-auto text-center">
-                <h1 class="font-bold md:text-6xl text-4xl md:mb-10 mb-5">
-                    <span id="typing"></span>
-                    <span class="cursor">|</span>
-                </h1>
-                <p class="font-light text-base md:text-xl mb-10">
-                    I'm a software engineer based in Bandung, Indonesia, working for a Malaysian property company. I’m passionate about crafting impactful software and have contributed to projects that help shape the way people interact with property technology. <br>wanna discuss about something?
-                </p>
-                <div class="mt-20 flex justify-center gap-5 md:px-8"> 
-                    <a href="#contact" class="flex-1 rounded-full py-3 md:text-base text-sm bg-blue-500 text-white transition-all duration-300 hover:bg-blue-600 hover:-translate-y-1">
-                        Let's Talk!
-                    </a>
-                    <a href="https://game.khoirony.fun" class="flex-1 rounded-full py-3 md:text-base text-sm bg-red-500 text-white transition-all duration-300 hover:bg-red-600 hover:-translate-y-1">
-                        Try Game Version!
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <script>
-        const typingElement = document.getElementById("typing");
-    
-        // Array kata + info warna
-        const words = [
-            { text: "hi,", color: "" },
-            { text: "rony", color: "red" },
-            { text: "here.", color: "" }
-        ];
-    
-        let wordIndex = 0;
-        let charIndex = 0;
-        let output = "";
-    
-        function typeWriter() {
-            if (wordIndex < words.length) {
-                const currentWord = words[wordIndex];
-                const displayText = currentWord.text.substring(0, charIndex + 1);
-    
-                // Tampilkan output sejauh ini
-                let tempOutput = output;
-                if (currentWord.color === "red") {
-                    tempOutput += `<span class="text-red-600">${displayText}</span>`;
-                } else {
-                    tempOutput += displayText;
-                }
-                typingElement.innerHTML = tempOutput;
-    
-                charIndex++;
-    
-                if (charIndex === currentWord.text.length) {
-                    output = tempOutput + " "; // tambah spasi antar kata
-                    wordIndex++;
-                    charIndex = 0;
-                }
-    
-                setTimeout(typeWriter, 200);
-            }
-        }
-    
-        window.onload = typeWriter;
-    </script>
 
-    <section id="about" class="max-w-screen-lg mx-auto px-8">
-        <div class="py-16"></div>
-
-        <div data-aos="fade-up">
-            <h1 class="text-4xl font-semibold">/ about me</h1>
-        </div>
-
-        <br><br>
-        <div class="flex flex-col md:flex-row items-center md:gap-10">
-
-            <div class="hidden md:flex w-1/3" data-aos="fade-right" data-aos-delay="200">
-                <img src="/src/img/rony.jpg" alt="Foto Rony" class="rounded-lg object-cover">
-            </div>
-
-            <div class="md:w-2/3 w-full" data-aos="fade-left" data-aos-delay="300">
-                <span class="font-light">
-                    I am currently a Software Engineer at Far Capital, Working in Project PropertyHub, Bachelor of Informatics Engineering, have experience 3 years as a web developer, currently stack is <span class="font-semibold">Tailwind, AlpineJs, Laravel, Livewire</span> a.k.a <span class="font-semibold">TALL Stack</span> and <span class="font-semibold">Bubble.io.</span> <br><br>
-
-                    Fast Learner, Enjoy learning new things, especially in the programming fields and wants to become a professional software developer.
-                    <br><br>
-                    And outside of work, I am also interested in Gym, Economics, and Game Dev.
-                </span>
-                <!-- <br><br>
-                <div class="flex justify-center">
-                    <a href="src/docs/Khoirony Arief.pdf" class="rounded-full py-3 px-8 bg-red-600 text-white transition-all duration-300 hover:bg-red-600 hover:-translate-y-1">
-                        Download pdf CV
-                    </a>
-                </div> -->
-            </div>
-        </div>
-    </section>
-
-    <section id="skill" class="max-w-screen-lg mx-auto px-8">
-        <div class="py-16"></div>
-    
-        <div class="flex" data-aos="fade-up">
-            <h1 class="text-4xl font-semibold mb-10">/ current skill</h1>
-        </div>
-    
-        <div class="grid md:grid-cols-2 gap-4">
-    
-            <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105" data-aos="fade-up">
-                <div class="flex items-center gap-3 mb-2">
-                    <div class="py-2 px-3 bg-slate-600 text-blue-500 rounded-lg">
-                        📦
-                    </div>
-                    <h2 class="text-lg font-semibold text-slate-500">Frameworks &amp; Tools</h2>
-                </div>
-                <p class="text-slate-400">Laravel, Livewire, AlpineJS, Tailwind, Unity, MySQL</p>
-            </div>
-    
-            <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105" data-aos="fade-up" data-aos-delay="100">
-                <div class="flex items-center gap-3 mb-2">
-                    <div class="py-2 px-3 bg-slate-600 text-blue-500 rounded-lg">
-                        ⚡
-                    </div>
-                    <h2 class="text-lg font-semibold text-slate-500">No-Code Tools</h2>
-                </div>
-                <p class="text-slate-400">Bubble, Make, n8n</p>
-            </div>
-    
-            <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105" data-aos="fade-up" data-aos-delay="200">
-                <div class="flex items-center gap-3 mb-2">
-                    <div class="py-2 px-3 bg-slate-600 text-blue-500 rounded-lg">
-                        ☁️
-                    </div>
-                    <h2 class="text-lg font-semibold text-slate-500">Cloud &amp; Deployment</h2>
-                </div>
-                <p class="text-slate-400">CI/CD, VPS, Docker, AWS S3, Third-Party Integrations</p>
-            </div>
-    
-            <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105" data-aos="fade-up" data-aos-delay="300">
-                <div class="flex items-center gap-3 mb-2">
-                    <div class="py-2 px-3 bg-slate-600 text-blue-500 rounded-lg">
-                        💪
-                    </div>
-                    <h2 class="text-lg font-semibold text-slate-500">Core Strengths</h2>
-                </div>
-                <p class="text-slate-400">Writing clean & maintainable code, Collaboration and teamwork</p>
-            </div>
-        </div>
-    </section>
-      
-
-    <section id="experience" class="max-w-screen-lg mx-auto px-8 overflow-hidden">
-        <div class="py-16"></div>
-    
-        <div class="mb-12" data-aos="fade-up">
-            <h1 class="text-4xl font-semibold mb-4 text-white">/ working experience</h1>
-            <p class="text-slate-400 max-w-2xl">
-                I have been working as a software engineer, contributing to the development
-                and improvement of web applications across various projects under 
-                <span class="text-red-500 font-semibold">Far Capital</span>.
-            </p>
-        </div>
-    
-        <div class="px-2 md:px-4">
-            <div class="relative border-l-2 border-slate-800 pl-8 space-y-10 ml-3">
-                
-                <div data-aos="fade-right" data-aos-delay="100" class="relative">
-                    <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-red-600"></div>
-                    
-                    <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group">
-                        <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
-                            Wetopia Admin Portal Development
-                        </h3>
-                        <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    
-                    <div class="detail mt-4 text-slate-400 hidden overflow-hidden transition-all duration-300">
-                        <ul class="list-disc pl-5 space-y-2 leading-relaxed marker:text-red-600">
-                            <li>Successfully developed the Wetopia Admin Portal from scratch to completion using the Laravel TALL Stack (Tailwind, AlpineJS, Laravel, and Livewire).</li>
-                            <li>Designed and implemented core features to manage platform operations, user roles, and data flow efficiently across the system.</li>
-                            <li>Integrated the portal with third-party services such as Mixpanel for analytics, AWS S3 for storage, DocuSign for e-signatures, and Zendesk for support.</li>
-                            <li>Delivered a scalable and maintainable solution that aligned with business needs while ensuring smooth performance and usability.</li>
-                        </ul>
-                    </div>
-                </div>
-    
-                <div data-aos="fade-right" data-aos-delay="150" class="relative">
-                    <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-slate-700"></div>
-                    
-                    <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group">
-                        <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
-                            Wetopia Owner &amp; Tenant Portal
-                        </h3>
-                        <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    
-                    <div class="detail mt-4 text-slate-400 hidden">
-                        <ul class="list-disc pl-5 space-y-2 leading-relaxed marker:text-red-600">
-                            <li>Successfully developed the Wetopia Owner Portal and Tenant Portal from scratch to completion using Bubble.io as the main no-code platform.</li>
-                            <li>Integrated both portals with the Wetopia Admin Portal database, Admin Portal API, and implemented Single Sign-On (SSO) for seamless access.</li>
-                            <li>Connected the system with multiple third-party applications to enhance features and provide better usability for end users.</li>
-                            <li>Collaborated with stakeholders to ensure business requirements were met and delivered a fully functional solution aligned with project goals.</li>
-                        </ul>
-                    </div>
-                </div>
-    
-                <div data-aos="fade-right" data-aos-delay="200" class="relative">
-                    <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-slate-700"></div>
-                    
-                    <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group">
-                        <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
-                            Wetopia System Maintenance
-                        </h3>
-                        <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    
-                    <div class="detail mt-4 text-slate-400 hidden">
-                        <ul class="list-disc pl-5 space-y-2 leading-relaxed marker:text-red-600">
-                            <li>Maintained the Wetopia platform by handling Admin, Owner, and Tenant modules to ensure smooth functionality and stable performance.</li>
-                            <li>Identified, debugged, and fixed bugs that appeared across different modules, improving system reliability and user experience.</li>
-                            <li>Optimized existing code structures to enhance performance and reduce potential system issues.</li>
-                            <li>Collaborated with the team to review reported issues and deliver timely, effective solutions for end users.</li>
-                        </ul>
-                    </div>
-                </div>
-    
-                <div data-aos="fade-right" data-aos-delay="250" class="relative">
-                    <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-red-600"></div>
-                    
-                    <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group">
-                        <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
-                            PropertyHub Admin
-                        </h3>
-                        <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    
-                    <div class="detail mt-4 text-slate-400 hidden">
-                        <ul class="list-disc pl-5 space-y-2 leading-relaxed marker:text-red-600">
-                            <li>Planned the development flow before starting projects by mapping out features, creating flowcharts, breaking them into tasks, and building an MVP through to completion.</li>
-                            <li>Utilized Tailwind, Livewire, and AlpineJS to translate Figma UI designs into responsive web interfaces, while integrating data retrieval from a Laravel backend for efficient display and interaction.</li>
-                            <li>Developed custom Laravel services to manage backend logic, handle frontend data exchange, and integrate with third-party applications.</li>
-                            <li>Conducted User Acceptance Testing (UAT) to evaluate performance, assess design and usability, and provide actionable feedback for overall improvement.</li>
-                        </ul>
-                    </div>
-                </div>
-    
-                <div data-aos="fade-right" data-aos-delay="300" class="relative">
-                    <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-slate-700"></div>
-                    
-                    <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group">
-                        <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
-                            PropertyHub Client
-                        </h3>
-                        <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    
-                    <div class="detail mt-4 text-slate-400 hidden">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ligula vitae velit fermentum, ac suscipit orci euismod.</p>
-                    </div>
-                </div>
-    
-                <div data-aos="fade-right" data-aos-delay="350" class="relative">
-                    <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-slate-700"></div>
-                    
-                    <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group">
-                        <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
-                            PropertyHub Agent
-                        </h3>
-                        <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    
-                    <div class="detail mt-4 text-slate-400 hidden">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ligula vitae velit fermentum, ac suscipit orci euismod.</p>
-                    </div>
-                </div>
-
-                <div data-aos="fade-right" data-aos-delay="350" class="relative">
-                    <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-slate-700"></div>
-                    
-                    <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group">
-                        <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
-                            PropertyHub Public Portal
-                        </h3>
-                        <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    
-                    <div class="detail mt-4 text-slate-400 hidden">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ligula vitae velit fermentum, ac suscipit orci euismod.</p>
-                    </div>
-                </div>
-    
-                <div data-aos="fade-right" data-aos-delay="400" class="relative">
-                    <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-slate-700"></div>
-                    
-                    <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group">
-                        <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
-                            PropertyHub System Maintenance
-                        </h3>
-                        <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    
-                    <div class="detail mt-4 text-slate-400 hidden">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ligula vitae velit fermentum, ac suscipit orci euismod.</p>
-                    </div>
-                </div>
-
-                <div data-aos="fade-right" data-aos-delay="400" class="relative">
-                    <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-red-600"></div>
-                    
-                    <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group">
-                        <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
-                            Matchbank System Maintenance
-                        </h3>
-                        <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    
-                    <div class="detail mt-4 text-slate-400 hidden">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ligula vitae velit fermentum, ac suscipit orci euismod.</p>
-                    </div>
-                </div>
-    
-            </div>
-        </div>
-    </section>
-    
-    <script>
-    function toggleDetail(button) {
-        const detail = button.nextElementSibling;
-        const isHidden = detail.classList.contains('hidden');
-        
-        // Toggle class active pada tombol untuk animasi panah
-        button.classList.toggle('active');
-    
-        // Toggle hidden pada detail
-        if (isHidden) {
-            detail.classList.remove('hidden');
-        } else {
-            detail.classList.add('hidden');
-        }
-    }
-    </script>
-
-    <section id="project" class="max-w-screen-lg mx-auto px-8">
-        <div class="py-16"></div>
-        
-        <div class="mb-10" data-aos="fade-up">
-            <h1 class="text-4xl font-semibold mb-2">/ weekend project</h1>
-            <p class="">Side projects I work on during weekends, experimenting with new tech and building ideas that excite me.</p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-            <div class="bg-slate-800 p-6 rounded-xl shadow transition duration-300 hover:shadow-lg hover:bg-slate-700 hover:-translate-y-2" data-aos="fade-up">
-                <div class="flex justify-between items-start mb-8">
-                    <div>
-                        <i class="fa-solid fa-code text-2xl text-green-400"></i>
-                    </div>
-                    <div>
-                        <a href="https://github.com/khoirony/game-kirim-paket" target="_blank" class="text-gray-400 hover:text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.21 11.43c.6.11.82-.26.82-.58v-2.17c-3.34.73-4.04-1.41-4.04-1.41-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48.99.11-.78.42-1.3.76-1.6-2.67-.3-5.48-1.34-5.48-5.95 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.23a11.53 11.53 0 016 0c2.28-1.55 3.3-1.23 3.3-1.23.66 1.64.25 2.86.12 3.16.77.84 1.24 1.91 1.24 3.22 0 4.63-2.82 5.64-5.51 5.94.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.82.58A12 12 0 0024 12c0-6.63-5.37-12-12-12z" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-        
-                <a href="https://game.khoirony.fun/" target="_blank" class="text-lg font-semibold mt-4 hover:text-slate-200">
-                    Personal Profile Game Version
-                </a>
-                <p class="text-gray-400 text-sm mt-2">
-                    My personal profile website but designed as a delivery-themed interactive game, Visitors can play as a courier and completing deliveries while reading my personal profile.
-                </p>
-                <p class="text-gray-500 text-xs mt-4">Unity, C#.</p>
-            </div>
-        
-            <div class="bg-slate-800 p-6 rounded-xl shadow transition duration-300 hover:shadow-lg hover:bg-slate-700 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
-                <div class="flex justify-between items-start mb-8">
-                    <div>
-                        <i class="fa-solid fa-code text-2xl text-green-400"></i>
-                    </div>
-                    <div>
-                        <a href="https://github.com/khoirony/financial-report" target="_blank" class="text-gray-400 hover:text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.21 11.43c.6.11.82-.26.82-.58v-2.17c-3.34.73-4.04-1.41-4.04-1.41-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48.99.11-.78.42-1.3.76-1.6-2.67-.3-5.48-1.34-5.48-5.95 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.23a11.53 11.53 0 016 0c2.28-1.55 3.3-1.23 3.3-1.23.66 1.64.25 2.86.12 3.16.77.84 1.24 1.91 1.24 3.22 0 4.63-2.82 5.64-5.51 5.94.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.82.58A12 12 0 0024 12c0-6.63-5.37-12-12-12z" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-        
-                <a href="https://financial.khoirony.fun/" target="_blank" class="text-lg font-semibold mt-4 hover:text-slate-200">
-                    Fintrac
-                </a>
-                <p class="text-gray-400 text-sm mt-2">
-                    A website to track my monthly financial cashflow, analyzing income and expenses, include FIRE planning, investment tracking, and analysis using market news and broker summaries to optimize financial strategies.
-                </p>
-                <p class="text-gray-500 text-xs mt-4">Laravel, Livewire, Alpine Js, Tailwind, MySQL, etc.</p>
-            </div>
-        
-            <div class="bg-slate-800 p-6 rounded-xl shadow transition duration-300 hover:shadow-lg hover:bg-slate-700 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
-                <div class="flex justify-between items-start mb-8">
-                    <div>
-                        <i class="fa-solid fa-code text-2xl text-green-400"></i>
-                    </div>
-                    <div>
-                        <a href="https://github.com/khoirony/tensorflow-js" target="_blank" class="text-gray-400 hover:text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.21 11.43c.6.11.82-.26.82-.58v-2.17c-3.34.73-4.04-1.41-4.04-1.41-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48.99.11-.78.42-1.3.76-1.6-2.67-.3-5.48-1.34-5.48-5.95 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.23a11.53 11.53 0 016 0c2.28-1.55 3.3-1.23 3.3-1.23.66 1.64.25 2.86.12 3.16.77.84 1.24 1.91 1.24 3.22 0 4.63-2.82 5.64-5.51 5.94.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.82.58A12 12 0 0024 12c0-6.63-5.37-12-12-12z" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-        
-                <a href="https://tensorflow.khoirony.fun/" target="_blank" class="text-lg font-semibold mt-4 hover:text-slate-200">
-                    Object Detection
-                    <span class="rounded-md text-xs font-light bg-yellow-600 px-3 py-1 text-white">Learning</span>
-                </a>
-                <p class="text-gray-400 text-sm mt-2">
-                    My learning project, a web built with TensorFlow, uses camera to detect and recognize objects in real time, This project helps me practice machine learning and computer vision on the web.
-                </p>
-                <p class="text-gray-500 text-xs mt-4">Tailwind, Tensorflow JS.</p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="py-16"></div>
-        <div class="max-w-screen-lg mx-auto px-8 mb-20">
-            <h1 class="text-4xl font-semibold mb-10">/ get in touch</h1>
-
-            <div class="flex-1 flex justify-center md:w-auto w-full">
-                <div class="md:w-1/2">
-                    <p class="font-light text-center">
-                        Interesting in working together? <br>
-                        Feel free to contact me for any project or collaboration.
+    <main>
+        <!-- Hero Section -->
+        <section class="overflow-hidden">
+            <div class="flex items-center md:max-w-screen-sm mx-auto pt-44 md:py-0 md:min-h-screen md:px-5 px-6">
+                <div class="w-full mx-auto text-center">
+                    <h1 class="font-bold md:text-6xl text-4xl md:mb-10 mb-5">
+                        <span id="typing"></span>
+                        <span class="cursor">|</span>
+                    </h1>
+                    <p class="font-light text-base md:text-xl mb-10">
+                        I'm a software engineer based in Bandung, Indonesia, working for a Malaysian property company. I'm passionate about crafting impactful software and have contributed to projects that help shape the way people interact with property technology.
+                        <br>Wanna discuss about something?
                     </p>
-
-                    <!-- Notif after send message -->
-                    <div id="status"><br></div>
-        
-                    <!-- Form Message -->
-                    <form action="https://formspree.io/f/mjvlvlwq" class="w-full" method="post" id="formcontact">
-                        <div class="mb-3 mt-1 w-full">
-                            <input type="text" class="bg-slate-800 w-full border-0 rounded-md px-5 py-2" id="Nama" name="Nama Lengkap"
-                                placeholder="Full Name">
-                            </div>
-                            <div class="mb-3">
-                            <input type="email" class="bg-slate-800 w-full border-0 rounded-md px-5 py-2" id="Email" name="Email"
-                                aria-describedby="emailHelp" placeholder="Your Email">
-                            </div>
-                            <div class="mb-3">
-                            <textarea class="bg-slate-800 w-full border-0 rounded-md px-5 py-2" id="Pesan" name="Pesan" rows="3"
-                                placeholder="Message"></textarea>
-                        </div>
-                        <div class="flex justify-center">
-                            <button type="submit" class="bg-red-600 text-white px-20 py-2 rounded-full cursor-pointer">Send</button>
-                        </div>
-                    </form>
-                    <!-- End Of Form Message -->
+                    <div class="mt-20 flex justify-center gap-5 md:px-8">
+                        <a href="#contact" class="flex-1 rounded-full py-3 md:text-base text-sm bg-blue-500 text-white transition-all duration-300 hover:bg-blue-600 hover:-translate-y-1">
+                            Let's Talk!
+                        </a>
+                        <a href="https://game.khoirony.fun" class="flex-1 rounded-full py-3 md:text-base text-sm bg-red-500 text-white transition-all duration-300 hover:bg-red-600 hover:-translate-y-1">
+                            Try Game Version!
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- End Of Contact Section -->
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="max-w-screen-lg mx-auto px-8 pt-32">
+            <div data-aos="fade-up">
+                <h2 class="text-4xl font-semibold">/ about me</h2>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center md:gap-10 mt-8">
+                <div class="hidden md:flex w-1/3" data-aos="fade-right" data-aos-delay="200">
+                    <img src="/src/img/rony.jpg" alt="Photo of Khoirony Arief" class="rounded-lg object-cover">
+                </div>
+
+                <div class="md:w-2/3 w-full" data-aos="fade-left" data-aos-delay="300">
+                    <p class="font-light">
+                        I am currently a Software Engineer at Far Capital, Working in Project PropertyHub, Bachelor of Informatics Engineering, have experience 3 years as a web developer, currently stack is <span class="font-semibold">Tailwind, AlpineJs, Laravel, Livewire</span> a.k.a <span class="font-semibold">TALL Stack</span> and <span class="font-semibold">Bubble.io.</span>
+                    </p>
+                    <p class="font-light mt-4">
+                        Fast Learner, Enjoy learning new things, especially in the programming fields and wants to become a professional software developer.
+                    </p>
+                    <p class="font-light mt-4">
+                        And outside of work, I am also interested in Gym, Economics, and Game Dev.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skill" class="max-w-screen-lg mx-auto px-8 pt-32">
+            <div class="flex" data-aos="fade-up">
+                <h2 class="text-4xl font-semibold mb-10">/ current skill</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105" data-aos="fade-up">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="py-2 px-3 bg-slate-600 text-blue-500 rounded-lg">📦</div>
+                        <h3 class="text-lg font-semibold text-slate-500">Frameworks &amp; Tools</h3>
+                    </div>
+                    <p class="text-slate-400">Laravel, Livewire, AlpineJS, Tailwind, Unity, MySQL</p>
+                </div>
+
+                <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="py-2 px-3 bg-slate-600 text-blue-500 rounded-lg">⚡</div>
+                        <h3 class="text-lg font-semibold text-slate-500">No-Code Tools</h3>
+                    </div>
+                    <p class="text-slate-400">Bubble, Make, n8n</p>
+                </div>
+
+                <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="py-2 px-3 bg-slate-600 text-blue-500 rounded-lg">☁️</div>
+                        <h3 class="text-lg font-semibold text-slate-500">Cloud &amp; Deployment</h3>
+                    </div>
+                    <p class="text-slate-400">CI/CD, VPS, Docker, AWS S3, Third-Party Integrations</p>
+                </div>
+
+                <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="py-2 px-3 bg-slate-600 text-blue-500 rounded-lg">💪</div>
+                        <h3 class="text-lg font-semibold text-slate-500">Core Strengths</h3>
+                    </div>
+                    <p class="text-slate-400">Writing clean & maintainable code, Collaboration and teamwork</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Working Experience Section -->
+        <section id="experience" class="max-w-screen-lg mx-auto px-8 overflow-hidden pt-32">
+            <div class="mb-12" data-aos="fade-up">
+                <h2 class="text-4xl font-semibold mb-4 text-white">/ working experience</h2>
+                <p class="text-slate-400 max-w-2xl">
+                    I have been working as a software engineer, contributing to the development
+                    and improvement of web applications across various projects under
+                    <span class="text-red-500 font-semibold">Far Capital</span>.
+                </p>
+            </div>
+
+            <div class="px-2 md:px-4">
+                <div class="relative border-l-2 border-slate-800 pl-8 space-y-10 ml-3">
+
+                    <!-- Wetopia Admin Portal -->
+                    <div data-aos="fade-right" data-aos-delay="100" class="relative">
+                        <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-red-600"></div>
+
+                        <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group" aria-expanded="false" aria-label="Toggle Wetopia Admin Portal details">
+                            <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
+                                Wetopia Admin Portal Development
+                            </h3>
+                            <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div class="detail mt-4 text-slate-400 hidden overflow-hidden transition-all duration-300">
+                            <ul class="list-disc pl-5 space-y-2 leading-relaxed marker:text-red-600">
+                                <li>Successfully developed the Wetopia Admin Portal from scratch to completion using the Laravel TALL Stack (Tailwind, AlpineJS, Laravel, and Livewire).</li>
+                                <li>Designed and implemented core features to manage platform operations, user roles, and data flow efficiently across the system.</li>
+                                <li>Integrated the portal with third-party services such as Mixpanel for analytics, AWS S3 for storage, DocuSign for e-signatures, and Zendesk for support.</li>
+                                <li>Delivered a scalable and maintainable solution that aligned with business needs while ensuring smooth performance and usability.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Wetopia Owner & Tenant Portal -->
+                    <div data-aos="fade-right" data-aos-delay="150" class="relative">
+                        <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-slate-700"></div>
+
+                        <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group" aria-expanded="false" aria-label="Toggle Wetopia Owner and Tenant Portal details">
+                            <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
+                                Wetopia Owner &amp; Tenant Portal
+                            </h3>
+                            <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div class="detail mt-4 text-slate-400 hidden">
+                            <ul class="list-disc pl-5 space-y-2 leading-relaxed marker:text-red-600">
+                                <li>Successfully developed the Wetopia Owner Portal and Tenant Portal from scratch to completion using Bubble.io as the main no-code platform.</li>
+                                <li>Integrated both portals with the Wetopia Admin Portal database, Admin Portal API, and implemented Single Sign-On (SSO) for seamless access.</li>
+                                <li>Connected the system with multiple third-party applications to enhance features and provide better usability for end users.</li>
+                                <li>Collaborated with stakeholders to ensure business requirements were met and delivered a fully functional solution aligned with project goals.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Wetopia System Maintenance -->
+                    <div data-aos="fade-right" data-aos-delay="200" class="relative">
+                        <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-slate-700"></div>
+
+                        <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group" aria-expanded="false" aria-label="Toggle Wetopia System Maintenance details">
+                            <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
+                                Wetopia System Maintenance
+                            </h3>
+                            <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div class="detail mt-4 text-slate-400 hidden">
+                            <ul class="list-disc pl-5 space-y-2 leading-relaxed marker:text-red-600">
+                                <li>Maintained the Wetopia platform by handling Admin, Owner, and Tenant modules to ensure smooth functionality and stable performance.</li>
+                                <li>Identified, debugged, and fixed bugs that appeared across different modules, improving system reliability and user experience.</li>
+                                <li>Optimized existing code structures to enhance performance and reduce potential system issues.</li>
+                                <li>Collaborated with the team to review reported issues and deliver timely, effective solutions for end users.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- PropertyHub Admin -->
+                    <div data-aos="fade-right" data-aos-delay="250" class="relative">
+                        <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-red-600"></div>
+
+                        <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group" aria-expanded="false" aria-label="Toggle PropertyHub Admin details">
+                            <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
+                                PropertyHub Admin
+                            </h3>
+                            <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div class="detail mt-4 text-slate-400 hidden">
+                            <ul class="list-disc pl-5 space-y-2 leading-relaxed marker:text-red-600">
+                                <li>Planned the development flow before starting projects by mapping out features, creating flowcharts, breaking them into tasks, and building an MVP through to completion.</li>
+                                <li>Utilized Tailwind, Livewire, and AlpineJS to translate Figma UI designs into responsive web interfaces, while integrating data retrieval from a Laravel backend for efficient display and interaction.</li>
+                                <li>Developed custom Laravel services to manage backend logic, handle frontend data exchange, and integrate with third-party applications.</li>
+                                <li>Conducted User Acceptance Testing (UAT) to evaluate performance, assess design and usability, and provide actionable feedback for overall improvement.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- PropertyHub Client -->
+                    <div data-aos="fade-right" data-aos-delay="300" class="relative">
+                        <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-slate-700"></div>
+
+                        <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group" aria-expanded="false" aria-label="Toggle PropertyHub Client details">
+                            <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
+                                PropertyHub Client
+                            </h3>
+                            <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div class="detail mt-4 text-slate-400 hidden">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ligula vitae velit fermentum, ac suscipit orci euismod.</p>
+                        </div>
+                    </div>
+
+                    <!-- PropertyHub Agent -->
+                    <div data-aos="fade-right" data-aos-delay="350" class="relative">
+                        <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-slate-700"></div>
+
+                        <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group" aria-expanded="false" aria-label="Toggle PropertyHub Agent details">
+                            <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
+                                PropertyHub Agent
+                            </h3>
+                            <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div class="detail mt-4 text-slate-400 hidden">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ligula vitae velit fermentum, ac suscipit orci euismod.</p>
+                        </div>
+                    </div>
+
+                    <!-- PropertyHub Public Portal -->
+                    <div data-aos="fade-right" data-aos-delay="400" class="relative">
+                        <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-slate-700"></div>
+
+                        <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group" aria-expanded="false" aria-label="Toggle PropertyHub Public Portal details">
+                            <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
+                                PropertyHub Public Portal
+                            </h3>
+                            <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div class="detail mt-4 text-slate-400 hidden">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ligula vitae velit fermentum, ac suscipit orci euismod.</p>
+                        </div>
+                    </div>
+
+                    <!-- PropertyHub System Maintenance -->
+                    <div data-aos="fade-right" data-aos-delay="450" class="relative">
+                        <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-slate-700"></div>
+
+                        <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group" aria-expanded="false" aria-label="Toggle PropertyHub System Maintenance details">
+                            <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
+                                PropertyHub System Maintenance
+                            </h3>
+                            <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div class="detail mt-4 text-slate-400 hidden">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ligula vitae velit fermentum, ac suscipit orci euismod.</p>
+                        </div>
+                    </div>
+
+                    <!-- Matchbank System Maintenance -->
+                    <div data-aos="fade-right" data-aos-delay="500" class="relative">
+                        <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-red-600"></div>
+
+                        <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group" aria-expanded="false" aria-label="Toggle Matchbank System Maintenance details">
+                            <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
+                                Matchbank System Maintenance
+                            </h3>
+                            <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div class="detail mt-4 text-slate-400 hidden">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ligula vitae velit fermentum, ac suscipit orci euismod.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Weekend Projects Section -->
+        <section id="project" class="max-w-screen-lg mx-auto px-8 pt-32">
+            <div class="mb-10" data-aos="fade-up">
+                <h2 class="text-4xl font-semibold mb-2">/ weekend project</h2>
+                <p>Side projects I work on during weekends, experimenting with new tech and building ideas that excite me.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+                <!-- Project: Personal Profile Game Version -->
+                <div class="bg-slate-800 p-6 rounded-xl shadow transition duration-300 hover:shadow-lg hover:bg-slate-700 hover:-translate-y-2" data-aos="fade-up">
+                    <div class="flex justify-between items-start mb-8">
+                        <div>
+                            <i class="fa-solid fa-code text-2xl text-green-400" aria-hidden="true"></i>
+                        </div>
+                        <a href="https://github.com/khoirony/game-kirim-paket" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white" aria-label="View Personal Profile Game Version on GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.21 11.43c.6.11.82-.26.82-.58v-2.17c-3.34.73-4.04-1.41-4.04-1.41-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48.99.11-.78.42-1.3.76-1.6-2.67-.3-5.48-1.34-5.48-5.95 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.23a11.53 11.53 0 016 0c2.28-1.55 3.3-1.23 3.3-1.23.66 1.64.25 2.86.12 3.16.77.84 1.24 1.91 1.24 3.22 0 4.63-2.82 5.64-5.51 5.94.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.82.58A12 12 0 0024 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <a href="https://game.khoirony.fun/" target="_blank" rel="noopener noreferrer" class="text-lg font-semibold mt-4 hover:text-slate-200">
+                        Personal Profile Game Version
+                    </a>
+                    <p class="text-gray-400 text-sm mt-2">
+                        My personal profile website but designed as a delivery-themed interactive game, Visitors can play as a courier and completing deliveries while reading my personal profile.
+                    </p>
+                    <p class="text-gray-500 text-xs mt-4">Unity, C#.</p>
+                </div>
+
+                <!-- Project: Fintrac -->
+                <div class="bg-slate-800 p-6 rounded-xl shadow transition duration-300 hover:shadow-lg hover:bg-slate-700 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex justify-between items-start mb-8">
+                        <div>
+                            <i class="fa-solid fa-code text-2xl text-green-400" aria-hidden="true"></i>
+                        </div>
+                        <a href="https://github.com/khoirony/financial-report" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white" aria-label="View Fintrac on GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.21 11.43c.6.11.82-.26.82-.58v-2.17c-3.34.73-4.04-1.41-4.04-1.41-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48.99.11-.78.42-1.3.76-1.6-2.67-.3-5.48-1.34-5.48-5.95 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.23a11.53 11.53 0 016 0c2.28-1.55 3.3-1.23 3.3-1.23.66 1.64.25 2.86.12 3.16.77.84 1.24 1.91 1.24 3.22 0 4.63-2.82 5.64-5.51 5.94.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.82.58A12 12 0 0024 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <a href="https://financial.khoirony.fun/" target="_blank" rel="noopener noreferrer" class="text-lg font-semibold mt-4 hover:text-slate-200">
+                        Fintrac
+                    </a>
+                    <p class="text-gray-400 text-sm mt-2">
+                        A website to track my monthly financial cashflow, analyzing income and expenses, include FIRE planning, investment tracking, and analysis using market news and broker summaries to optimize financial strategies.
+                    </p>
+                    <p class="text-gray-500 text-xs mt-4">Laravel, Livewire, Alpine Js, Tailwind, MySQL, etc.</p>
+                </div>
+
+                <!-- Project: Object Detection -->
+                <div class="bg-slate-800 p-6 rounded-xl shadow transition duration-300 hover:shadow-lg hover:bg-slate-700 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex justify-between items-start mb-8">
+                        <div>
+                            <i class="fa-solid fa-code text-2xl text-green-400" aria-hidden="true"></i>
+                        </div>
+                        <a href="https://github.com/khoirony/tensorflow-js" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white" aria-label="View Object Detection on GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.21 11.43c.6.11.82-.26.82-.58v-2.17c-3.34.73-4.04-1.41-4.04-1.41-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48.99.11-.78.42-1.3.76-1.6-2.67-.3-5.48-1.34-5.48-5.95 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.23a11.53 11.53 0 016 0c2.28-1.55 3.3-1.23 3.3-1.23.66 1.64.25 2.86.12 3.16.77.84 1.24 1.91 1.24 3.22 0 4.63-2.82 5.64-5.51 5.94.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.82.58A12 12 0 0024 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <a href="https://tensorflow.khoirony.fun/" target="_blank" rel="noopener noreferrer" class="text-lg font-semibold mt-4 hover:text-slate-200">
+                        Object Detection
+                        <span class="rounded-md text-xs font-light bg-yellow-600 px-3 py-1 text-white">Learning</span>
+                    </a>
+                    <p class="text-gray-400 text-sm mt-2">
+                        My learning project, a web built with TensorFlow, uses camera to detect and recognize objects in real time, This project helps me practice machine learning and computer vision on the web.
+                    </p>
+                    <p class="text-gray-500 text-xs mt-4">Tailwind, Tensorflow JS.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="pt-32">
+            <div class="max-w-screen-lg mx-auto px-8 mb-20">
+                <h2 class="text-4xl font-semibold mb-10">/ get in touch</h2>
+
+                <div class="flex-1 flex justify-center md:w-auto w-full">
+                    <div class="md:w-1/2">
+                        <p class="font-light text-center">
+                            Interesting in working together? <br>
+                            Feel free to contact me for any project or collaboration.
+                        </p>
+
+                        <!-- Status notification after sending message -->
+                        <div id="status" class="mt-4"></div>
+
+                        <!-- Contact Form -->
+                        <form action="https://formspree.io/f/mjvlvlwq" class="w-full mt-4" method="post" id="formcontact">
+                            <div class="mb-3 w-full">
+                                <label for="Nama" class="sr-only">Full Name</label>
+                                <input
+                                    type="text"
+                                    class="bg-slate-800 w-full border-0 rounded-md px-5 py-2"
+                                    id="Nama"
+                                    name="Nama Lengkap"
+                                    placeholder="Full Name"
+                                    required
+                                    minlength="2"
+                                    autocomplete="name"
+                                >
+                            </div>
+                            <div class="mb-3">
+                                <label for="Email" class="sr-only">Email Address</label>
+                                <input
+                                    type="email"
+                                    class="bg-slate-800 w-full border-0 rounded-md px-5 py-2"
+                                    id="Email"
+                                    name="Email"
+                                    placeholder="Your Email"
+                                    required
+                                    autocomplete="email"
+                                >
+                            </div>
+                            <div class="mb-3">
+                                <label for="Pesan" class="sr-only">Message</label>
+                                <textarea
+                                    class="bg-slate-800 w-full border-0 rounded-md px-5 py-2"
+                                    id="Pesan"
+                                    name="Pesan"
+                                    rows="3"
+                                    placeholder="Message"
+                                    required
+                                    minlength="10"
+                                ></textarea>
+                            </div>
+                            <div class="flex justify-center">
+                                <button type="submit" class="bg-red-600 text-white px-20 py-2 rounded-full cursor-pointer transition-all duration-300 hover:bg-red-700 hover:-translate-y-1">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="max-w-screen-lg mx-auto px-8 text-center font-light text-sm pb-5" id="footer">
@@ -556,26 +516,13 @@
             Developed by Khoirony Arief
         </p>
         <p>
-            &copy;
-            <span>
-                <span id="year">
-                    <script>document.getElementById('year').appendChild(document.createTextNode(new Date().getFullYear()))</script>
-                </span>
-                 All Right Reserved
-            </span>
+            &copy; <span id="year"></span> All Rights Reserved
         </p>
     </footer>
-    <!-- End Of Footer -->
 
+    <!-- External Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({
-        duration: 1000,
-        easing: 'ease-in-out',
-        once: true,
-        offset: 120
-    });
-    </script>
+    <script src="src/app.js"></script>
 
 </body>
 </html>
