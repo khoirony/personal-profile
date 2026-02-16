@@ -47,7 +47,7 @@
     <nav class="bg-white/90 dark:bg-slate-900/85 backdrop-blur-xl fixed top-0 left-0 w-full z-50 border-b border-slate-200 dark:border-slate-800/50 transition-colors duration-300">
         <div class="flex max-w-screen-xl items-center justify-between mx-auto px-5 py-3 md:p-4">
             <a href="/" class="flex items-center group">
-                <span class="hidden md:inline self-center text-2xl font-semibold whitespace-nowrap ml-2 text-slate-900 dark:text-white transition-colors duration-300 group-hover:text-primary">Khoirony Arief</span>
+                <span class="md:inline self-center text-2xl font-semibold whitespace-nowrap ml-2 text-slate-900 dark:text-white transition-colors duration-300 group-hover:text-primary">Khoirony Arief</span>
             </a>
 
             <div class="hidden md:block">
@@ -78,16 +78,16 @@
                     </span>
                 </button>
 
-                <button @click="toggleMobileMenu()" class="md:hidden flex flex-col items-center justify-center w-10 h-10 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+                <!-- <button @click="toggleMobileMenu()" class="md:hidden flex flex-col items-center justify-center w-10 h-10 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
                     <i class="fa-solid fa-bars text-xl"></i>
-                </button>
+                </button> -->
             </div>
         </div>
     </nav>
 
-    <div x-show="mobileMenuOpen" x-cloak x-transition.opacity @click="toggleMobileMenu()" class="fixed inset-0 bg-black/60 z-[90] md:hidden"></div>
+    <!-- <div x-show="mobileMenuOpen" x-cloak x-transition.opacity @click="toggleMobileMenu()" class="fixed inset-0 bg-black/60 z-[90] md:hidden"></div> -->
 
-    <div class="fixed top-0 right-0 w-72 h-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl z-[100] md:hidden border-l border-slate-200 dark:border-slate-700/50 shadow-2xl transition-transform duration-300 ease-in-out"
+    <!-- <div class="fixed top-0 right-0 w-72 h-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl z-[100] md:hidden border-l border-slate-200 dark:border-slate-700/50 shadow-2xl transition-transform duration-300 ease-in-out"
          :class="mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'">
         <div class="flex flex-col h-full">
             <div class="flex justify-end p-5">
@@ -110,7 +110,7 @@
                 </ul>
             </nav>
         </div>
-    </div>
+    </div> -->
 
     <main>
         <section id="home" class="overflow-hidden relative min-h-[85vh] md:min-h-screen flex items-center">
@@ -288,7 +288,7 @@
                 
                 // Typing Animation Data
                 typewriterText: '',
-                typewriterWords: ["Hello World!", "I'm Khoirony Arief.", "I'm a Software Engineer."],
+                typewriterWords: ["Hello World!", "I'm Rony.", "I'm a Software Engineer."],
                 typingSpeed: 100,
                 deletingSpeed: 50,
                 pauseBetween: 2000,
