@@ -3,505 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Khoirony Arief – Software Engineer based in Bandung, Indonesia. Portfolio showcasing web development projects with Laravel, Livewire, and Tailwind.">
+    <meta name="description" content="Khoirony Arief – Software Engineer based in Bandung, Indonesia. Specializing in TALL Stack.">
     <meta name="author" content="Khoirony Arief">
-    <meta name="theme-color" content="#0f172a">
-    <meta property="og:title" content="Khoirony Arief – Software Engineer">
-    <meta property="og:description" content="Portfolio showcasing web development projects with Laravel, Livewire, and Tailwind.">
-    <meta property="og:type" content="website">
     <title>Khoirony Arief – Software Engineer</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
     <link rel="icon" href="src/img/favicon.ico" type="image/x-icon">
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;500;700&family=Roboto:wght@900&display=swap" rel="stylesheet">
-
-    <!-- FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c12c059ff2.js" crossorigin="anonymous"></script>
 
-    <!-- AOS (Animate On Scroll) -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { poppins: ['Poppins', 'sans-serif'] },
+                    colors: { primary: '#dc2626' } // Red-600 centralized
+                }
+            }
+        }
+    </script>
     <style>
-        .cursor {
-            display: inline-block;
-            animation: blink 2s infinite;
-        }
-        @keyframes blink {
-            0%, 50%, 100% { opacity: 1; }
-            25%, 75% { opacity: 0; }
-        }
+        [x-cloak] { display: none !important; }
+        body { font-family: 'Poppins', sans-serif; }
+        .cursor-blink { animation: blink 1s step-end infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
     </style>
-</head>
-<body class="font-poppins bg-slate-900 text-slate-400">
 
-    <!-- Navigation -->
-    <nav class="bg-slate-900 fixed top-0 left-0 w-full z-50" aria-label="Main navigation">
-        <div class="flex flex-wrap max-w-screen-xl items-center justify-between mx-auto p-4 text-slate-400">
-            <a href="/" class="hidden w-full md:block md:w-auto">
-                <span class="self-center text-2xl font-medium whitespace-nowrap">Khoirony Arief</span>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="bg-slate-50 text-slate-600 dark:bg-slate-900 dark:text-slate-400 transition-colors duration-300 pb-24 md:pb-0"
+    x-data="portfolio()"
+    x-init="initApp()"
+    :class="{ 'dark': darkMode }">
+
+    <nav class="bg-white/90 dark:bg-slate-900/85 backdrop-blur-xl fixed top-0 left-0 w-full z-50 border-b border-slate-200 dark:border-slate-800/50 transition-colors duration-300">
+        <div class="flex max-w-screen-xl items-center justify-between mx-auto px-5 py-3 md:p-4">
+            <a href="/" class="flex items-center group">
+                <span class="hidden md:inline self-center text-2xl font-semibold whitespace-nowrap ml-2 text-slate-900 dark:text-white transition-colors duration-300 group-hover:text-primary">Khoirony Arief</span>
             </a>
 
-            <div class="hidden w-full md:block md:w-auto">
-                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-12 rtl:space-x-reverse md:mt-0 md:border-0">
-                    <li>
-                        <a href="#" class="block py-2 px-3 rounded hover:text-gray-100 md:hover:bg-transparent md:border-0 md:p-0">Home</a>
-                    </li>
-                    <li>
-                        <a href="#about" class="block py-2 px-3 rounded hover:text-gray-100 md:hover:bg-transparent md:border-0 md:p-0">About Me</a>
-                    </li>
-                    <li>
-                        <a href="#project" class="block py-2 px-3 rounded hover:text-gray-100 md:hover:bg-transparent md:border-0 md:p-0">Projects</a>
-                    </li>
-                    <li>
-                        <a href="https://financial.khoirony.fun" class="block py-2 px-3 rounded hover:text-gray-100 md:hover:bg-transparent md:border-0 md:p-0">Finance</a>
-                    </li>
+            <div class="hidden md:block">
+                <ul class="font-medium flex flex-row space-x-12">
+                    <template x-for="item in navItems">
+                        <li>
+                            <a :href="item.href" 
+                               class="block py-2 px-3 transition-colors hover:text-primary dark:hover:text-red-400"
+                               :class="activeSection === item.id ? 'text-primary dark:text-red-400 font-bold' : 'text-slate-700 dark:text-slate-300'"
+                               x-text="item.label"></a>
+                        </li>
+                    </template>
                 </ul>
             </div>
 
-            <div class="flex items-end w-full md:w-auto justify-end gap-3">
-                <a href="https://github.com/khoirony" target="_blank" rel="noopener noreferrer" class="hover:text-gray-100" aria-label="GitHub Profile">
-                    <i class="fa-brands fa-github text-[20px]"></i>
-                </a>
-                <a href="https://instagram.com/khoirony_arief" target="_blank" rel="noopener noreferrer" class="hover:text-gray-100" aria-label="Instagram Profile">
-                    <i class="fa-brands fa-instagram text-[20px] font-bold"></i>
-                </a>
-                <a href="mailto:khoironyarief08@gmail.com" class="hover:text-gray-100" aria-label="Send Email">
-                    <i class="fa-solid fa-at text-[20px]"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/khoirony-arief/" target="_blank" rel="noopener noreferrer" class="hover:text-gray-100" aria-label="LinkedIn Profile">
-                    <i class="fa-brands fa-linkedin-in text-[20px]"></i>
-                </a>
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="https://github.com/khoirony" target="_blank" class="hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-github text-[20px]"></i></a>
+                    <a href="https://instagram.com/khoirony_arief" target="_blank" class="hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-instagram text-[20px]"></i></a>
+                    <a href="https://www.linkedin.com/in/khoirony-arief/" target="_blank" class="hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-linkedin-in text-[20px]"></i></a>
+                </div>
+
+                <button @click="toggleTheme()" class="relative w-12 h-6 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 cursor-pointer shadow-inner" 
+                        :class="darkMode ? 'bg-slate-700' : 'bg-slate-300'" aria-label="Toggle theme">
+                    <span class="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transform transition-transform duration-300 flex items-center justify-center text-[12px]" 
+                          :class="darkMode ? 'translate-x-6' : 'translate-x-0'">
+                        <span x-text="darkMode ? '🌙' : '☀️'"></span>
+                    </span>
+                </button>
+
+                <button @click="toggleMobileMenu()" class="md:hidden flex flex-col items-center justify-center w-10 h-10 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
             </div>
         </div>
     </nav>
 
+    <div x-show="mobileMenuOpen" x-cloak x-transition.opacity @click="toggleMobileMenu()" class="fixed inset-0 bg-black/60 z-[90] md:hidden"></div>
+
+    <div class="fixed top-0 right-0 w-72 h-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl z-[100] md:hidden border-l border-slate-200 dark:border-slate-700/50 shadow-2xl transition-transform duration-300 ease-in-out"
+         :class="mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'">
+        <div class="flex flex-col h-full">
+            <div class="flex justify-end p-5">
+                <button @click="toggleMobileMenu()" class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+                    <i class="fa-solid fa-xmark text-xl text-slate-600 dark:text-slate-400"></i>
+                </button>
+            </div>
+            <nav class="flex-1 px-6 overflow-y-auto">
+                <ul class="space-y-2">
+                    <template x-for="item in navItemsMobile">
+                        <li>
+                            <a :href="item.href" @click="toggleMobileMenu()" 
+                               class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-primary dark:hover:text-red-400 transition-all"
+                               :class="activeSection === item.id ? 'text-primary dark:text-red-400 bg-slate-50 dark:bg-slate-800' : 'text-slate-600 dark:text-slate-300'">
+                                <i :class="`fa-solid fa-${item.icon} w-5 text-center`"></i>
+                                <span class="font-medium" x-text="item.label"></span>
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
     <main>
-        <!-- Hero Section -->
-        <section class="overflow-hidden">
-            <div class="flex items-center md:max-w-screen-sm mx-auto pt-44 md:py-0 md:min-h-screen md:px-5 px-6">
-                <div class="w-full mx-auto text-center">
-                    <h1 class="font-bold md:text-6xl text-4xl md:mb-10 mb-5">
-                        <span id="typing"></span>
-                        <span class="cursor">|</span>
-                    </h1>
-                    <p class="font-light text-base md:text-xl mb-10">
-                        I'm a software engineer based in Bandung, Indonesia, working for a Malaysian property company. I'm passionate about crafting impactful software and have contributed to projects that help shape the way people interact with property technology.
-                        <br>Wanna discuss about something?
-                    </p>
-                    <div class="mt-20 flex justify-center gap-5 md:px-8">
-                        <a href="#contact" class="flex-1 rounded-full py-3 md:text-base text-sm bg-blue-500 text-white transition-all duration-300 hover:bg-blue-600 hover:-translate-y-1">
-                            Let's Talk!
-                        </a>
-                        <a href="https://game.khoirony.fun" class="flex-1 rounded-full py-3 md:text-base text-sm bg-red-500 text-white transition-all duration-300 hover:bg-red-600 hover:-translate-y-1">
-                            Try Game Version!
-                        </a>
-                    </div>
+        <section id="home" class="overflow-hidden relative min-h-[85vh] md:min-h-screen flex items-center">
+            <div class="md:max-w-screen-sm mx-auto px-6 md:px-5 w-full text-center pt-20 md:pt-0">
+                <h1 class="font-bold text-3xl sm:text-4xl md:text-6xl mb-4 md:mb-10 min-h-[60px] md:min-h-[80px]">
+                    <span x-text="typewriterText" class="text-slate-900 dark:text-white"></span>
+                    <span class="cursor-blink text-primary">|</span>
+                </h1>
+                <p class="font-light text-sm sm:text-base md:text-xl mb-8 md:mb-10 leading-relaxed text-slate-600 dark:text-slate-300">
+                    I'm a software engineer based in Bandung, Indonesia, working for a Malaysian property company. I'm passionate about crafting impactful software and have contributed to projects that help shape the way people interact with property technology.
+                    <br class="hidden md:block">Wanna discuss about something?
+                </p>
+                <div class="mt-8 md:mt-12 flex flex-col sm:flex-row justify-center gap-3 sm:gap-5 px-4 md:px-8">
+                    <a href="#contact" class="rounded-full py-3 px-8 text-sm md:text-base bg-blue-600 text-white transition-all duration-300 hover:bg-blue-700 hover:-translate-y-1 hover:shadow-lg text-center">Let's Talk!</a>
+                    <a href="https://game.khoirony.fun" class="rounded-full py-3 px-8 text-sm md:text-base bg-primary text-white transition-all duration-300 hover:bg-red-700 hover:-translate-y-1 hover:shadow-lg text-center">Try Game Version!</a>
                 </div>
             </div>
         </section>
 
-        <!-- About Me Section -->
-        <section id="about" class="max-w-screen-lg mx-auto px-8 pt-32">
+        <section id="about" class="max-w-screen-lg mx-auto px-6 md:px-8 pt-20 md:pt-32">
             <div data-aos="fade-up">
-                <h2 class="text-4xl font-semibold">/ about me</h2>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-slate-900 dark:text-white">/ about me</h2>
             </div>
-
-            <div class="flex flex-col md:flex-row items-center md:gap-10 mt-8">
+            <div class="flex flex-col md:flex-row items-center md:gap-10 mt-6 md:mt-8">
                 <div class="hidden md:flex w-1/3" data-aos="fade-right" data-aos-delay="200">
-                    <img src="/src/img/rony.jpg" alt="Photo of Khoirony Arief" class="rounded-lg object-cover">
+                    <img src="/src/img/rony.jpg" onerror="this.style.display='none'" alt="Photo of Khoirony Arief" class="rounded-lg object-cover w-full shadow-lg">
+                    <div class="hidden w-full h-64 bg-slate-200 dark:bg-slate-800 rounded-lg flex items-center justify-center text-xs">Image Placeholder</div>
                 </div>
-
                 <div class="md:w-2/3 w-full" data-aos="fade-left" data-aos-delay="300">
-                    <p class="font-light">
-                        I am currently a Software Engineer at Far Capital, Working in Project PropertyHub, Bachelor of Informatics Engineering, have experience 3 years as a web developer, currently stack is <span class="font-semibold">Tailwind, AlpineJs, Laravel, Livewire</span> a.k.a <span class="font-semibold">TALL Stack</span> and <span class="font-semibold">Bubble.io.</span>
+                    <p class="font-light text-sm md:text-base leading-relaxed">
+                        I am currently a Software Engineer at Far Capital, Working in Project PropertyHub, Bachelor of Informatics Engineering, have experience 3 years as a web developer, currently stack is <span class="font-semibold text-primary">Tailwind, AlpineJs, Laravel, Livewire</span> a.k.a <span class="font-semibold text-primary">TALL Stack</span> and <span class="font-semibold text-primary">Bubble.io.</span>
                     </p>
-                    <p class="font-light mt-4">
+                    <p class="font-light text-sm md:text-base mt-3 md:mt-4 leading-relaxed">
                         Fast Learner, Enjoy learning new things, especially in the programming fields and wants to become a professional software developer.
                     </p>
-                    <p class="font-light mt-4">
+                    <p class="font-light text-sm md:text-base mt-3 md:mt-4 leading-relaxed">
                         And outside of work, I am also interested in Gym, Economics, and Game Dev.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skill" class="max-w-screen-lg mx-auto px-8 pt-32">
+        <section id="skill" class="max-w-screen-lg mx-auto px-6 md:px-8 pt-20 md:pt-32">
             <div class="flex" data-aos="fade-up">
-                <h2 class="text-4xl font-semibold mb-10">/ current skill</h2>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 md:mb-10 text-slate-900 dark:text-white">/ current skill</h2>
             </div>
-
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105" data-aos="fade-up">
-                    <div class="flex items-center gap-3 mb-2">
-                        <div class="py-2 px-3 bg-slate-600 text-blue-500 rounded-lg">📦</div>
-                        <h3 class="text-lg font-semibold text-slate-500">Frameworks &amp; Tools</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                <template x-for="(skill, index) in skills">
+                    <div class="p-4 md:p-5 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-xl shadow border transition-all duration-300 hover:shadow-lg hover:scale-105" 
+                         data-aos="fade-up" :data-aos-delay="index * 100">
+                        <div class="flex items-center gap-2 md:gap-3 mb-2">
+                            <div class="py-1.5 px-2.5 md:py-2 md:px-3 rounded-lg text-sm md:text-base bg-slate-100 dark:bg-slate-700" x-text="skill.emoji"></div>
+                            <h3 class="text-sm md:text-lg font-semibold text-slate-800 dark:text-slate-200" x-text="skill.title"></h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 text-xs md:text-base" x-text="skill.desc"></p>
                     </div>
-                    <p class="text-slate-400">Laravel, Livewire, AlpineJS, Tailwind, Unity, MySQL</p>
-                </div>
-
-                <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex items-center gap-3 mb-2">
-                        <div class="py-2 px-3 bg-slate-600 text-blue-500 rounded-lg">⚡</div>
-                        <h3 class="text-lg font-semibold text-slate-500">No-Code Tools</h3>
-                    </div>
-                    <p class="text-slate-400">Bubble, Make, n8n</p>
-                </div>
-
-                <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex items-center gap-3 mb-2">
-                        <div class="py-2 px-3 bg-slate-600 text-blue-500 rounded-lg">☁️</div>
-                        <h3 class="text-lg font-semibold text-slate-500">Cloud &amp; Deployment</h3>
-                    </div>
-                    <p class="text-slate-400">CI/CD, VPS, Docker, AWS S3, Third-Party Integrations</p>
-                </div>
-
-                <div class="p-5 bg-slate-800 rounded-xl shadow border border-slate-600 transition-all duration-300 hover:shadow-lg hover:scale-105" data-aos="fade-up" data-aos-delay="300">
-                    <div class="flex items-center gap-3 mb-2">
-                        <div class="py-2 px-3 bg-slate-600 text-blue-500 rounded-lg">💪</div>
-                        <h3 class="text-lg font-semibold text-slate-500">Core Strengths</h3>
-                    </div>
-                    <p class="text-slate-400">Writing clean & maintainable code, Collaboration and teamwork</p>
-                </div>
+                </template>
             </div>
         </section>
 
-        <!-- Working Experience Section -->
-        <section id="experience" class="max-w-screen-lg mx-auto px-8 overflow-hidden pt-32">
-            <div class="mb-12" data-aos="fade-up">
-                <h2 class="text-4xl font-semibold mb-4 text-white">/ working experience</h2>
-                <p class="text-slate-400 max-w-2xl">
-                    I have been working as a software engineer, contributing to the development
-                    and improvement of web applications across various projects under
-                    <span class="text-red-500 font-semibold">Far Capital</span>.
+        <section id="experience" class="max-w-screen-lg mx-auto px-6 md:px-8 overflow-hidden pt-20 md:pt-32">
+            <div class="mb-8 md:mb-12" data-aos="fade-up">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-3 md:mb-4 text-slate-900 dark:text-white">/ working experience</h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl text-sm md:text-base">
+                    I have been working as a software engineer, contributing to the development and improvement of web applications across various projects under <span class="text-primary font-semibold">Far Capital</span>.
                 </p>
             </div>
 
-            <div class="px-2 md:px-4">
-                <div class="relative border-l-2 border-slate-800 pl-8 space-y-10 ml-3">
+            <div class="px-0 md:px-4">
+                <div class="relative border-l-2 border-slate-200 dark:border-slate-800 pl-6 md:pl-8 space-y-6 md:space-y-10 ml-2 md:ml-3">
+                    <template x-for="(job, index) in experiences">
+                        <div x-data="{ open: false }" data-aos="fade-right" :data-aos-delay="100 + (index * 50)" class="relative">
+                            <div class="absolute -left-[33px] md:-left-[41px] top-1.5 h-4 w-4 md:h-5 md:w-5 rounded-full border-4"
+                                 :class="'border-[#0f172a] bg-slate-700 dark:border-white dark:bg-slate-900'"></div>
+                            
+                            <button @click="open = !open" class="flex items-center justify-between w-full text-left group select-none">
+                                <h3 class="text-base md:text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors pr-2" x-text="job.title"></h3>
+                                <svg class="w-4 h-4 md:w-5 md:h-5 text-slate-600 dark:text-slate-400 transition-transform duration-300 shrink-0" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
 
-                    <!-- Wetopia Admin Portal -->
-                    <div data-aos="fade-right" data-aos-delay="100" class="relative">
-                        <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-red-600"></div>
-
-                        <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group" aria-expanded="false" aria-label="Toggle Wetopia Admin Portal details">
-                            <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
-                                Wetopia Admin Portal Development
-                            </h3>
-                            <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-
-                        <div class="detail mt-4 text-slate-400 hidden overflow-hidden transition-all duration-300">
-                            <ul class="list-disc pl-5 space-y-2 leading-relaxed marker:text-red-600">
-                                <li>Successfully developed the Wetopia Admin Portal from scratch to completion using the Laravel TALL Stack (Tailwind, AlpineJS, Laravel, and Livewire).</li>
-                                <li>Designed and implemented core features to manage platform operations, user roles, and data flow efficiently across the system.</li>
-                                <li>Integrated the portal with third-party services such as Mixpanel for analytics, AWS S3 for storage, DocuSign for e-signatures, and Zendesk for support.</li>
-                                <li>Delivered a scalable and maintainable solution that aligned with business needs while ensuring smooth performance and usability.</li>
-                            </ul>
+                            <div x-show="open" x-collapse class="mt-3 md:mt-4 text-slate-600 dark:text-slate-400">
+                                <template x-if="job.description">
+                                    <p class="text-sm md:text-base" x-text="job.description"></p>
+                                </template>
+                                <ul class="list-disc pl-4 md:pl-5 space-y-2 leading-relaxed marker:text-red-600 text-sm md:text-base">
+                                    <template x-for="point in job.points">
+                                        <li x-text="point"></li>
+                                    </template>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Wetopia Owner & Tenant Portal -->
-                    <div data-aos="fade-right" data-aos-delay="150" class="relative">
-                        <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-slate-700"></div>
-
-                        <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group" aria-expanded="false" aria-label="Toggle Wetopia Owner and Tenant Portal details">
-                            <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
-                                Wetopia Owner &amp; Tenant Portal
-                            </h3>
-                            <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-
-                        <div class="detail mt-4 text-slate-400 hidden">
-                            <ul class="list-disc pl-5 space-y-2 leading-relaxed marker:text-red-600">
-                                <li>Successfully developed the Wetopia Owner Portal and Tenant Portal from scratch to completion using Bubble.io as the main no-code platform.</li>
-                                <li>Integrated both portals with the Wetopia Admin Portal database, Admin Portal API, and implemented Single Sign-On (SSO) for seamless access.</li>
-                                <li>Connected the system with multiple third-party applications to enhance features and provide better usability for end users.</li>
-                                <li>Collaborated with stakeholders to ensure business requirements were met and delivered a fully functional solution aligned with project goals.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Wetopia System Maintenance -->
-                    <div data-aos="fade-right" data-aos-delay="200" class="relative">
-                        <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-slate-700"></div>
-
-                        <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group" aria-expanded="false" aria-label="Toggle Wetopia System Maintenance details">
-                            <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
-                                Wetopia System Maintenance
-                            </h3>
-                            <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-
-                        <div class="detail mt-4 text-slate-400 hidden">
-                            <ul class="list-disc pl-5 space-y-2 leading-relaxed marker:text-red-600">
-                                <li>Maintained the Wetopia platform by handling Admin, Owner, and Tenant modules to ensure smooth functionality and stable performance.</li>
-                                <li>Identified, debugged, and fixed bugs that appeared across different modules, improving system reliability and user experience.</li>
-                                <li>Optimized existing code structures to enhance performance and reduce potential system issues.</li>
-                                <li>Collaborated with the team to review reported issues and deliver timely, effective solutions for end users.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- PropertyHub Admin -->
-                    <div data-aos="fade-right" data-aos-delay="250" class="relative">
-                        <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-red-600"></div>
-
-                        <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group" aria-expanded="false" aria-label="Toggle PropertyHub Admin details">
-                            <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
-                                PropertyHub Admin
-                            </h3>
-                            <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-
-                        <div class="detail mt-4 text-slate-400 hidden">
-                            <ul class="list-disc pl-5 space-y-2 leading-relaxed marker:text-red-600">
-                                <li>Planned the development flow before starting projects by mapping out features, creating flowcharts, breaking them into tasks, and building an MVP through to completion.</li>
-                                <li>Utilized Tailwind, Livewire, and AlpineJS to translate Figma UI designs into responsive web interfaces, while integrating data retrieval from a Laravel backend for efficient display and interaction.</li>
-                                <li>Developed custom Laravel services to manage backend logic, handle frontend data exchange, and integrate with third-party applications.</li>
-                                <li>Conducted User Acceptance Testing (UAT) to evaluate performance, assess design and usability, and provide actionable feedback for overall improvement.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- PropertyHub Client -->
-                    <div data-aos="fade-right" data-aos-delay="300" class="relative">
-                        <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-slate-700"></div>
-
-                        <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group" aria-expanded="false" aria-label="Toggle PropertyHub Client details">
-                            <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
-                                PropertyHub Client
-                            </h3>
-                            <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-
-                        <div class="detail mt-4 text-slate-400 hidden">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ligula vitae velit fermentum, ac suscipit orci euismod.</p>
-                        </div>
-                    </div>
-
-                    <!-- PropertyHub Agent -->
-                    <div data-aos="fade-right" data-aos-delay="350" class="relative">
-                        <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-slate-700"></div>
-
-                        <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group" aria-expanded="false" aria-label="Toggle PropertyHub Agent details">
-                            <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
-                                PropertyHub Agent
-                            </h3>
-                            <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-
-                        <div class="detail mt-4 text-slate-400 hidden">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ligula vitae velit fermentum, ac suscipit orci euismod.</p>
-                        </div>
-                    </div>
-
-                    <!-- PropertyHub Public Portal -->
-                    <div data-aos="fade-right" data-aos-delay="400" class="relative">
-                        <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-slate-700"></div>
-
-                        <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group" aria-expanded="false" aria-label="Toggle PropertyHub Public Portal details">
-                            <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
-                                PropertyHub Public Portal
-                            </h3>
-                            <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-
-                        <div class="detail mt-4 text-slate-400 hidden">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ligula vitae velit fermentum, ac suscipit orci euismod.</p>
-                        </div>
-                    </div>
-
-                    <!-- PropertyHub System Maintenance -->
-                    <div data-aos="fade-right" data-aos-delay="450" class="relative">
-                        <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-slate-700"></div>
-
-                        <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group" aria-expanded="false" aria-label="Toggle PropertyHub System Maintenance details">
-                            <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
-                                PropertyHub System Maintenance
-                            </h3>
-                            <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-
-                        <div class="detail mt-4 text-slate-400 hidden">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ligula vitae velit fermentum, ac suscipit orci euismod.</p>
-                        </div>
-                    </div>
-
-                    <!-- Matchbank System Maintenance -->
-                    <div data-aos="fade-right" data-aos-delay="500" class="relative">
-                        <div class="absolute -left-[41px] top-1.5 h-5 w-5 rounded-full border-4 border-[#0f172a] bg-red-600"></div>
-
-                        <button onclick="toggleDetail(this)" class="flex items-center justify-between w-full text-left group" aria-expanded="false" aria-label="Toggle Matchbank System Maintenance details">
-                            <h3 class="text-xl font-bold text-slate-200 group-hover:text-red-500 transition-colors">
-                                Matchbank System Maintenance
-                            </h3>
-                            <svg class="w-5 h-5 text-slate-500 transition-transform duration-300 group-[.active]:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-
-                        <div class="detail mt-4 text-slate-400 hidden">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ligula vitae velit fermentum, ac suscipit orci euismod.</p>
-                        </div>
-                    </div>
-
+                    </template>
                 </div>
             </div>
         </section>
 
-        <!-- Weekend Projects Section -->
-        <section id="project" class="max-w-screen-lg mx-auto px-8 pt-32">
-            <div class="mb-10" data-aos="fade-up">
-                <h2 class="text-4xl font-semibold mb-2">/ weekend project</h2>
-                <p>Side projects I work on during weekends, experimenting with new tech and building ideas that excite me.</p>
+        <section id="project" class="max-w-screen-lg mx-auto px-6 md:px-8 pt-20 md:pt-32">
+            <div class="mb-6 md:mb-10" data-aos="fade-up">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-2 text-slate-900 dark:text-white">/ weekend projects</h2>
+                <p class="text-sm md:text-base text-slate-600 dark:text-slate-400">Side projects I work on during weekends.</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-                <!-- Project: Personal Profile Game Version -->
-                <div class="bg-slate-800 p-6 rounded-xl shadow transition duration-300 hover:shadow-lg hover:bg-slate-700 hover:-translate-y-2" data-aos="fade-up">
-                    <div class="flex justify-between items-start mb-8">
-                        <div>
-                            <i class="fa-solid fa-code text-2xl text-green-400" aria-hidden="true"></i>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                <template x-for="(project, index) in projects">
+                    <div class="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 border p-5 md:p-6 rounded-xl shadow transition duration-300 hover:shadow-lg hover:-translate-y-2 flex flex-col" 
+                         data-aos="fade-up" :data-aos-delay="index * 100">
+                        <div class="flex justify-between items-start mb-6 md:mb-8">
+                            <div><i :class="project.icon + ' text-xl md:text-2xl text-green-400'"></i></div>
+                            <a :href="project.github" target="_blank" class="text-gray-400 hover:text-slate-900 dark:hover:text-white">
+                                <i class="fa-brands fa-github text-xl"></i>
+                            </a>
                         </div>
-                        <a href="https://github.com/khoirony/game-kirim-paket" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white" aria-label="View Personal Profile Game Version on GitHub">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.21 11.43c.6.11.82-.26.82-.58v-2.17c-3.34.73-4.04-1.41-4.04-1.41-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48.99.11-.78.42-1.3.76-1.6-2.67-.3-5.48-1.34-5.48-5.95 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.23a11.53 11.53 0 016 0c2.28-1.55 3.3-1.23 3.3-1.23.66 1.64.25 2.86.12 3.16.77.84 1.24 1.91 1.24 3.22 0 4.63-2.82 5.64-5.51 5.94.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.82.58A12 12 0 0024 12c0-6.63-5.37-12-12-12z" />
-                            </svg>
+                        <a :href="project.link" target="_blank" class="text-base md:text-lg font-semibold mt-4 text-slate-900 dark:text-white hover:text-primary">
+                            <span x-text="project.title"></span>
+                            <span x-show="project.tag" x-text="project.tag" class="rounded-md text-[10px] font-medium bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-500 px-2 py-0.5 ml-2"></span>
                         </a>
+                        <p class="text-gray-500 dark:text-slate-400 text-xs md:text-sm mt-2 leading-relaxed flex-grow" x-text="project.desc"></p>
+                        <p class="text-gray-500 text-xs mt-3 md:mt-4 border-t border-slate-100 dark:border-slate-700 pt-3" x-text="project.stack"></p>
                     </div>
-
-                    <a href="https://game.khoirony.fun/" target="_blank" rel="noopener noreferrer" class="text-lg font-semibold mt-4 hover:text-slate-200">
-                        Personal Profile Game Version
-                    </a>
-                    <p class="text-gray-400 text-sm mt-2">
-                        My personal profile website but designed as a delivery-themed interactive game, Visitors can play as a courier and completing deliveries while reading my personal profile.
-                    </p>
-                    <p class="text-gray-500 text-xs mt-4">Unity, C#.</p>
-                </div>
-
-                <!-- Project: Fintrac -->
-                <div class="bg-slate-800 p-6 rounded-xl shadow transition duration-300 hover:shadow-lg hover:bg-slate-700 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex justify-between items-start mb-8">
-                        <div>
-                            <i class="fa-solid fa-code text-2xl text-green-400" aria-hidden="true"></i>
-                        </div>
-                        <a href="https://github.com/khoirony/financial-report" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white" aria-label="View Fintrac on GitHub">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.21 11.43c.6.11.82-.26.82-.58v-2.17c-3.34.73-4.04-1.41-4.04-1.41-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48.99.11-.78.42-1.3.76-1.6-2.67-.3-5.48-1.34-5.48-5.95 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.23a11.53 11.53 0 016 0c2.28-1.55 3.3-1.23 3.3-1.23.66 1.64.25 2.86.12 3.16.77.84 1.24 1.91 1.24 3.22 0 4.63-2.82 5.64-5.51 5.94.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.82.58A12 12 0 0024 12c0-6.63-5.37-12-12-12z" />
-                            </svg>
-                        </a>
-                    </div>
-
-                    <a href="https://financial.khoirony.fun/" target="_blank" rel="noopener noreferrer" class="text-lg font-semibold mt-4 hover:text-slate-200">
-                        Fintrac
-                    </a>
-                    <p class="text-gray-400 text-sm mt-2">
-                        A website to track my monthly financial cashflow, analyzing income and expenses, include FIRE planning, investment tracking, and analysis using market news and broker summaries to optimize financial strategies.
-                    </p>
-                    <p class="text-gray-500 text-xs mt-4">Laravel, Livewire, Alpine Js, Tailwind, MySQL, etc.</p>
-                </div>
-
-                <!-- Project: Object Detection -->
-                <div class="bg-slate-800 p-6 rounded-xl shadow transition duration-300 hover:shadow-lg hover:bg-slate-700 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex justify-between items-start mb-8">
-                        <div>
-                            <i class="fa-solid fa-code text-2xl text-green-400" aria-hidden="true"></i>
-                        </div>
-                        <a href="https://github.com/khoirony/tensorflow-js" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white" aria-label="View Object Detection on GitHub">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.21 11.43c.6.11.82-.26.82-.58v-2.17c-3.34.73-4.04-1.41-4.04-1.41-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48.99.11-.78.42-1.3.76-1.6-2.67-.3-5.48-1.34-5.48-5.95 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.23a11.53 11.53 0 016 0c2.28-1.55 3.3-1.23 3.3-1.23.66 1.64.25 2.86.12 3.16.77.84 1.24 1.91 1.24 3.22 0 4.63-2.82 5.64-5.51 5.94.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.82.58A12 12 0 0024 12c0-6.63-5.37-12-12-12z" />
-                            </svg>
-                        </a>
-                    </div>
-
-                    <a href="https://tensorflow.khoirony.fun/" target="_blank" rel="noopener noreferrer" class="text-lg font-semibold mt-4 hover:text-slate-200">
-                        Object Detection
-                        <span class="rounded-md text-xs font-light bg-yellow-600 px-3 py-1 text-white">Learning</span>
-                    </a>
-                    <p class="text-gray-400 text-sm mt-2">
-                        My learning project, a web built with TensorFlow, uses camera to detect and recognize objects in real time, This project helps me practice machine learning and computer vision on the web.
-                    </p>
-                    <p class="text-gray-500 text-xs mt-4">Tailwind, Tensorflow JS.</p>
-                </div>
+                </template>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="pt-32">
-            <div class="max-w-screen-lg mx-auto px-8 mb-20">
-                <h2 class="text-4xl font-semibold mb-10">/ get in touch</h2>
+        <section id="contact" class="pt-20 md:pt-32 pb-10">
+            <div class="max-w-screen-lg mx-auto px-6 md:px-8">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 md:mb-10 text-slate-900 dark:text-white">/ get in touch</h2>
 
-                <div class="flex-1 flex justify-center md:w-auto w-full">
-                    <div class="md:w-1/2">
-                        <p class="font-light text-center">
+                <div class="flex-1 flex justify-center w-full">
+                    <div class="w-full md:w-1/2">
+                        <p class="font-light text-center text-sm md:text-base text-slate-600 dark:text-slate-400">
                             Interesting in working together? <br>
                             Feel free to contact me for any project or collaboration.
                         </p>
 
-                        <!-- Status notification after sending message -->
-                        <div id="status" class="mt-4"></div>
-
-                        <!-- Contact Form -->
-                        <form action="https://formspree.io/f/mjvlvlwq" class="w-full mt-4" method="post" id="formcontact">
-                            <div class="mb-3 w-full">
-                                <label for="Nama" class="sr-only">Full Name</label>
-                                <input
-                                    type="text"
-                                    class="bg-slate-800 w-full border-0 rounded-md px-5 py-2"
-                                    id="Nama"
-                                    name="Nama Lengkap"
-                                    placeholder="Full Name"
-                                    required
-                                    minlength="2"
-                                    autocomplete="name"
-                                >
-                            </div>
-                            <div class="mb-3">
-                                <label for="Email" class="sr-only">Email Address</label>
-                                <input
-                                    type="email"
-                                    class="bg-slate-800 w-full border-0 rounded-md px-5 py-2"
-                                    id="Email"
-                                    name="Email"
-                                    placeholder="Your Email"
-                                    required
-                                    autocomplete="email"
-                                >
-                            </div>
-                            <div class="mb-3">
-                                <label for="Pesan" class="sr-only">Message</label>
-                                <textarea
-                                    class="bg-slate-800 w-full border-0 rounded-md px-5 py-2"
-                                    id="Pesan"
-                                    name="Pesan"
-                                    rows="3"
-                                    placeholder="Message"
-                                    required
-                                    minlength="10"
-                                ></textarea>
-                            </div>
-                            <div class="flex justify-center">
-                                <button type="submit" class="bg-red-600 text-white px-20 py-2 rounded-full cursor-pointer transition-all duration-300 hover:bg-red-700 hover:-translate-y-1">Send</button>
+                        <form action="https://formspree.io/f/mjvlvlwq" method="POST" class="w-full mt-8 space-y-4">
+                            <input type="text" name="name" placeholder="Full Name" required class="w-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-lg px-4 py-3 outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all">
+                            <input type="email" name="email" placeholder="Your Email" required class="w-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-lg px-4 py-3 outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all">
+                            <textarea name="message" rows="4" placeholder="Message" required class="w-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-lg px-4 py-3 outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"></textarea>
+                            <div class="flex justify-center pt-2">
+                                <button type="submit" class="w-full sm:w-auto bg-primary text-white px-12 py-3 rounded-full cursor-pointer transition-all duration-300 hover:bg-red-700 hover:-translate-y-1 hover:shadow-lg font-medium">Send Message</button>
                             </div>
                         </form>
                     </div>
@@ -510,19 +261,180 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="max-w-screen-lg mx-auto px-8 text-center font-light text-sm pb-5" id="footer">
-        <p class="mb-1 text-base">
-            Developed by Khoirony Arief
-        </p>
-        <p>
-            &copy; <span id="year"></span> All Rights Reserved
-        </p>
+    <footer class="max-w-screen-lg mx-auto px-6 md:px-8 text-center font-light text-sm pb-20 md:pb-10 pt-10 text-slate-500 dark:text-slate-400">
+        <p class="mb-1">Developed by <span class="font-medium text-slate-700 dark:text-slate-200">Khoirony Arief</span></p>
+        <p>&copy; <span x-text="new Date().getFullYear()"></span> All Rights Reserved</p>
     </footer>
 
-    <!-- External Scripts -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="src/app.js"></script>
+    <nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800/50 z-40 px-2 py-3">
+        <div class="flex items-center justify-around">
+            <template x-for="item in navItemsMobile.filter(i => i.label !== 'Skills')">
+                <a :href="item.href" class="flex flex-col items-center gap-1 transition-colors"
+                   :class="activeSection === item.id ? 'text-primary dark:text-red-400' : 'text-slate-500 dark:text-slate-400 hover:text-primary'">
+                    <i :class="`fa-solid fa-${item.icon} text-lg`"></i>
+                    <span class="text-[10px]" x-text="item.label"></span>
+                </a>
+            </template>
+        </div>
+    </nav>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('portfolio', () => ({
+                darkMode: localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches),
+                mobileMenuOpen: false,
+                activeSection: 'home',
+                
+                // Typing Animation Data
+                typewriterText: '',
+                typewriterWords: ["Hello World!", "I'm Khoirony Arief.", "I'm a Software Engineer."],
+                typingSpeed: 100,
+                deletingSpeed: 50,
+                pauseBetween: 2000,
+                wordIndex: 0,
+                charIndex: 0,
+                isDeleting: false,
+
+                // Data Arrays (Simpler HTML)
+                navItems: [
+                    { label: 'Home', href: '#', id: 'home' },
+                    { label: 'About Me', href: '#about', id: 'about' },
+                    { label: 'Projects', href: '#project', id: 'project' },
+                    { label: 'Finance', href: 'https://financial.khoirony.fun', id: 'finance' }
+                ],
+                navItemsMobile: [
+                    {icon: 'house', label: 'Home', href: '#', id: 'home'},
+                    {icon: 'briefcase', label: 'Work', href: '#experience', id: 'experience'},
+                    {icon: 'code', label: 'Projects', href: '#project', id: 'project'},
+                    {icon: 'envelope', label: 'Contact', href: '#contact', id: 'contact'},
+                    {icon: 'chart-pie', label: 'Finance', href: 'https://financial.khoirony.fun', id: 'finance'},
+                ],
+                skills: [
+                    { emoji: '📦', title: 'Frameworks & Tools', desc: 'Laravel, Livewire, AlpineJS, Tailwind, Unity, MySQL' },
+                    { emoji: '⚡', title: 'No-Code Tools', desc: 'Bubble, Make, n8n' },
+                    { emoji: '☁️', title: 'Cloud & Deployment', desc: 'CI/CD, VPS, Docker, AWS S3, Third-Party Integrations' },
+                    { emoji: '💪', title: 'Core Strengths', desc: 'Writing clean & maintainable code, Collaboration and teamwork' }
+                ],
+                experiences: [
+                    {
+                        title: 'Wetopia',
+                        dotClass: 'border-slate-900 dark:border-white bg-white dark:bg-slate-900',
+                        description: 'A Web-based app platform aimed at streamlining short-term rentals, similar to the Airbnb ecosystem.',
+                        points: [
+                            'Built the Wetopia Admin, Owner, and Tenant portals from scratch using Laravel TALL Stack and Bubble.io.',
+                            'Developed core features to handle user roles, property listings, and booking management.',
+                            'Connect and synced data between the Laravel Admin dashboard and the Bubble.io Owner & Tenant portals.',
+                            'Integrated external services including Mixpanel (analytics), AWS S3 (storage), DocuSign, and Zendesk.',
+                            'Delivered a stable and scalable web application that meets business requirements.'
+                        ]
+                    },
+                    {
+                        title: 'Property HUB',
+                        dotClass: 'border-slate-50 dark:border-slate-900 bg-red-600',
+                        description: 'A Web-based app platform to facilitating property buying, selling, agent management, signing document, etc.',
+                        points: [
+                            'Planned and developed the entire system (Admin, Client, Agent, and Public portals) using the Laravel TALL Stack.',
+                            'Built a responsive and interactive UI using Tailwind CSS, Livewire, and AlpineJS.',
+                            'Consume backend services from Matchbank to get property data and provide intelligent property financing recommendations.',
+                            'Delivered a stable and scalable web application that meets business requirements.',
+                            'Integrated external services including Mixpanel (analytics), AWS S3 (storage), DocuSign, Zendesk, etc.'
+                        ]
+                    },
+                    {
+                        title: 'Matchbank',
+                        dotClass: 'border-slate-50 dark:border-slate-900 bg-red-600',
+                        description: 'A fintech solution designed to screen loan applicants and provide intelligent property financing recommendations.',
+                        points: [
+                            'Create Connection and synced data from Matchbank to Property HUB Apps securely.',
+                            'Create custom backend logic to supply data to Property HUB Apps.',
+                            'Create custom setting flags to handle new feature Matchbank/Property HUB release smoothly.',
+                            'Used the TALL stack to build a user-friendly interface for displaying financial results.',
+                        ]
+                    }
+                ],
+                projects: [
+                    {
+                        title: 'Personal Profile Game',
+                        icon: 'fa-solid fa-gamepad',
+                        github: 'https://github.com/khoirony/game-kirim-paket',
+                        link: 'https://game.khoirony.fun/',
+                        desc: 'My personal profile website but designed as a delivery-themed interactive game.',
+                        stack: 'Unity, C#'
+                    },
+                    {
+                        title: 'Fintrac',
+                        icon: 'fa-solid fa-chart-pie',
+                        github: 'https://github.com/khoirony/financial-report',
+                        link: 'https://financial.khoirony.fun/',
+                        desc: 'A website to track my monthly financial cashflow, analyzing income and expenses, include FIRE planning.',
+                        stack: 'Laravel, Livewire, MySQL'
+                    },
+                    {
+                        title: 'Object Detection',
+                        icon: 'fa-solid fa-eye',
+                        github: 'https://github.com/khoirony/tensorflow-js',
+                        link: 'https://tensorflow.khoirony.fun/',
+                        tag: 'Learning',
+                        desc: 'Real-time object detection using TensorFlow.js and webcam to practice Computer Vision.',
+                        stack: 'Tailwind, Tensorflow JS'
+                    }
+                ],
+
+                initApp() {
+                    // Start Typing
+                    this.type();
+                    
+                    // Init Theme
+                    if (this.darkMode) document.documentElement.classList.add('dark');
+                    this.$watch('darkMode', val => {
+                        localStorage.setItem('theme', val ? 'dark' : 'light');
+                        val ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark');
+                    });
+
+                    // Scroll Spy (Simple implementation)
+                    window.addEventListener('scroll', () => {
+                        const sections = ['home', 'about', 'skill', 'experience', 'project', 'contact'];
+                        let current = '';
+                        sections.forEach(section => {
+                            const el = document.getElementById(section);
+                            if (el && window.scrollY >= (el.offsetTop - 200)) {
+                                current = section;
+                            }
+                        });
+                        if (current) this.activeSection = current;
+                    });
+                },
+
+                type() {
+                    const currentWord = this.typewriterWords[this.wordIndex];
+                    if (this.isDeleting) {
+                        this.typewriterText = currentWord.substring(0, this.charIndex - 1);
+                        this.charIndex--;
+                    } else {
+                        this.typewriterText = currentWord.substring(0, this.charIndex + 1);
+                        this.charIndex++;
+                    }
+
+                    if (!this.isDeleting && this.charIndex === currentWord.length) {
+                        this.isDeleting = true;
+                        setTimeout(() => this.type(), this.pauseBetween);
+                    } else if (this.isDeleting && this.charIndex === 0) {
+                        this.isDeleting = false;
+                        this.wordIndex = (this.wordIndex + 1) % this.typewriterWords.length;
+                        setTimeout(() => this.type(), 500);
+                    } else {
+                        setTimeout(() => this.type(), this.isDeleting ? this.deletingSpeed : this.typingSpeed);
+                    }
+                },
+
+                toggleTheme() { this.darkMode = !this.darkMode; },
+                toggleMobileMenu() { this.mobileMenuOpen = !this.mobileMenuOpen; document.body.style.overflow = this.mobileMenuOpen ? 'hidden' : ''; }
+            }))
+        })
+
+        // AOS Init
+        AOS.init({ offset: 100, duration: 800, easing: 'ease-in-out', once: true });
+    </script>
 </body>
 </html>
