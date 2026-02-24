@@ -3,16 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Khoirony Arief – Software Engineer based in Bandung, Indonesia. Specializing in TALL Stack.">
-    <meta name="author" content="Khoirony Arief">
-    <title>Khoirony Arief – Software Engineer</title>
     
+    <title>Khoirony Arief – Software Engineer (TALL Stack) in Bandung</title>
+    <meta name="title" content="Khoirony Arief – Software Engineer (TALL Stack) in Bandung">
+    <meta name="description" content="Portfolio of Khoirony Arief, a Software Engineer based in Bandung, Indonesia specializing in Tailwind, AlpineJs, Laravel, Livewire (TALL Stack) and Web Development.">
+    <meta name="author" content="Khoirony Arief">
+    <meta name="keywords" content="Khoirony Arief, Software Engineer, Web Developer, TALL Stack, Laravel, Bandung, Indonesia, Backend Developer">
+    
+    <link rel="canonical" href="https://khoirony.fun/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://khoirony.fun/">
+    <meta property="og:title" content="Khoirony Arief – Software Engineer">
+    <meta property="og:description" content="Portfolio of Khoirony Arief, a Software Engineer based in Bandung, Indonesia specializing in TALL Stack.">
+    <meta property="og:image" content="https://khoirony.fun/src/img/rony.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://khoirony.fun/">
+    <meta property="twitter:title" content="Khoirony Arief – Software Engineer">
+    <meta property="twitter:description" content="Portfolio of Khoirony Arief, a Software Engineer based in Bandung, Indonesia specializing in TALL Stack.">
+    <meta property="twitter:image" content="https://khoirony.fun/src/img/rony.jpg">
+
     <link rel="icon" href="src/img/favicon.ico" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/c12c059ff2.js" crossorigin="anonymous"></script>
+    
+    <script defer src="https://kit.fontawesome.com/c12c059ff2.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
 
@@ -37,6 +55,32 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Khoirony Arief",
+      "url": "https://khoirony.fun/",
+      "image": "https://khoirony.fun/src/img/rony.jpg",
+      "jobTitle": "Software Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Far Capital"
+      },
+      "alumniOf": "Bachelor of Informatics Engineering",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bandung",
+        "addressCountry": "ID"
+      },
+      "sameAs": [
+        "https://github.com/khoirony",
+        "https://www.linkedin.com/in/khoirony-arief/",
+        "https://instagram.com/khoirony_arief"
+      ]
+    }
+    </script>
 </head>
 
 <body class="bg-slate-50 text-slate-600 dark:bg-slate-900 dark:text-slate-400 transition-colors duration-300 pb-24 md:pb-0"
@@ -65,9 +109,9 @@
 
             <div class="flex items-center gap-4">
                 <div class="hidden md:flex items-center gap-3">
-                    <a href="https://github.com/khoirony" target="_blank" class="hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-github text-[20px]"></i></a>
-                    <a href="https://instagram.com/khoirony_arief" target="_blank" class="hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-instagram text-[20px]"></i></a>
-                    <a href="https://www.linkedin.com/in/khoirony-arief/" target="_blank" class="hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-linkedin-in text-[20px]"></i></a>
+                    <a href="https://github.com/khoirony" target="_blank" aria-label="Github Profile" class="hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-github text-[20px]"></i></a>
+                    <a href="https://instagram.com/khoirony_arief" target="_blank" aria-label="Instagram Profile" class="hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-instagram text-[20px]"></i></a>
+                    <a href="https://www.linkedin.com/in/khoirony-arief/" target="_blank" aria-label="LinkedIn Profile" class="hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-linkedin-in text-[20px]"></i></a>
                 </div>
 
                 <button @click="toggleTheme()" class="relative w-12 h-6 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 cursor-pointer shadow-inner" 
@@ -77,47 +121,17 @@
                         <span x-text="darkMode ? '🌙' : '☀️'"></span>
                     </span>
                 </button>
-
-                <!-- <button @click="toggleMobileMenu()" class="md:hidden flex flex-col items-center justify-center w-10 h-10 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
-                    <i class="fa-solid fa-bars text-xl"></i>
-                </button> -->
             </div>
         </div>
     </nav>
-
-    <!-- <div x-show="mobileMenuOpen" x-cloak x-transition.opacity @click="toggleMobileMenu()" class="fixed inset-0 bg-black/60 z-[90] md:hidden"></div> -->
-
-    <!-- <div class="fixed top-0 right-0 w-72 h-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl z-[100] md:hidden border-l border-slate-200 dark:border-slate-700/50 shadow-2xl transition-transform duration-300 ease-in-out"
-         :class="mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'">
-        <div class="flex flex-col h-full">
-            <div class="flex justify-end p-5">
-                <button @click="toggleMobileMenu()" class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
-                    <i class="fa-solid fa-xmark text-xl text-slate-600 dark:text-slate-400"></i>
-                </button>
-            </div>
-            <nav class="flex-1 px-6 overflow-y-auto">
-                <ul class="space-y-2">
-                    <template x-for="item in navItemsMobile">
-                        <li>
-                            <a :href="item.href" @click="toggleMobileMenu()" 
-                               class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-primary dark:hover:text-red-400 transition-all"
-                               :class="activeSection === item.id ? 'text-primary dark:text-red-400 bg-slate-50 dark:bg-slate-800' : 'text-slate-600 dark:text-slate-300'">
-                                <i :class="`fa-solid fa-${item.icon} w-5 text-center`"></i>
-                                <span class="font-medium" x-text="item.label"></span>
-                            </a>
-                        </li>
-                    </template>
-                </ul>
-            </nav>
-        </div>
-    </div> -->
 
     <main>
         <section id="home" class="overflow-hidden relative min-h-[85vh] md:min-h-screen flex items-center">
             <div class="md:max-w-screen-sm mx-auto px-6 md:px-5 w-full text-center pt-20 md:pt-0">
                 <h1 class="font-bold text-3xl sm:text-4xl md:text-6xl mb-4 md:mb-10 min-h-[60px] md:min-h-[80px]">
-                    <span x-text="typewriterText" class="text-slate-900 dark:text-white"></span>
-                    <span class="cursor-blink text-primary">|</span>
+                    <span class="sr-only">Khoirony Arief - Software Engineer</span>
+                    <span aria-hidden="true" x-text="typewriterText" class="text-slate-900 dark:text-white"></span>
+                    <span aria-hidden="true" class="cursor-blink text-primary">|</span>
                 </h1>
                 <p class="font-light text-sm sm:text-base md:text-xl mb-8 md:mb-10 leading-relaxed text-slate-600 dark:text-slate-300">
                     I'm a software engineer based in Bandung, Indonesia, working for a Malaysian property company. I'm passionate about crafting impactful software and have contributed to projects that help shape the way people interact with property technology.
@@ -136,7 +150,7 @@
             </div>
             <div class="flex flex-col md:flex-row items-center md:gap-10 mt-6 md:mt-8">
                 <div class="hidden md:flex w-1/3" data-aos="fade-right" data-aos-delay="200">
-                    <img src="/src/img/rony.jpg" onerror="this.style.display='none'" alt="Photo of Khoirony Arief" class="rounded-lg object-cover w-full shadow-lg">
+                    <img src="/src/img/rony.jpg" onerror="this.style.display='none'" alt="Khoirony Arief - Software Engineer in Bandung" class="rounded-lg object-cover w-full shadow-lg">
                     <div class="hidden w-full h-64 bg-slate-200 dark:bg-slate-800 rounded-lg flex items-center justify-center text-xs">Image Placeholder</div>
                 </div>
                 <div class="md:w-2/3 w-full" data-aos="fade-left" data-aos-delay="300">
@@ -296,7 +310,7 @@
                 charIndex: 0,
                 isDeleting: false,
 
-                // Data Arrays (Simpler HTML)
+                // Data Arrays
                 navItems: [
                     { label: 'Home', href: '#', id: 'home' },
                     { label: 'About Me', href: '#about', id: 'about' },
@@ -392,7 +406,7 @@
                         val ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark');
                     });
 
-                    // Scroll Spy (Simple implementation)
+                    // Scroll Spy
                     window.addEventListener('scroll', () => {
                         const sections = ['home', 'about', 'skill', 'experience', 'project', 'contact'];
                         let current = '';
