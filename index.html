@@ -178,7 +178,7 @@
             <div class="mb-10 md:mb-14" data-aos="fade-up">
                 <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white tracking-tight">/ working experience</h2>
                 <p class="text-slate-500 dark:text-slate-400 max-w-2xl text-sm md:text-base leading-relaxed">
-                    I have been working as a software engineer, contributing to the development and improvement of web applications across various projects under <span class="text-primary font-semibold">Far Capital</span>.
+                    I have been working as a software engineer, contributing to the development and improvement of web applications across various projects, including my work at <span class="text-primary font-semibold">Far Capital</span> and independent freelance developments.
                 </p>
             </div>
 
@@ -189,10 +189,20 @@
                             <div class="absolute -left-[33px] md:-left-[49px] top-1.5 h-4 w-4 md:h-5 md:w-5 rounded-full border-4 shadow-sm transition-colors duration-300"
                                  :class="[job.dotClass, open ? 'ring-4 ring-red-100 dark:ring-red-900/30' : '']"></div>
                             
-                            <button @click="open = !open" class="flex items-center justify-between w-full text-left select-none bg-transparent outline-none">
-                                <h3 class="text-lg md:text-2xl font-bold text-slate-800 dark:text-slate-100 group-hover:text-primary transition-colors pr-2" x-text="job.title"></h3>
-                                <div class="p-1.5 rounded-full bg-slate-50 dark:bg-slate-800 group-hover:bg-red-50 dark:group-hover:bg-slate-700 transition-colors">
-                                    <svg class="w-4 h-4 md:w-5 md:h-5 text-slate-400 group-hover:text-primary transition-transform duration-300 shrink-0" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <button @click="open = !open" class="flex items-start md:items-center justify-between w-full text-left select-none bg-transparent outline-none gap-4">
+                                <div class="flex flex-col pr-2">
+                                    <div class="flex items-center flex-wrap gap-2 mb-1">
+                                        <h3 class="text-lg md:text-2xl font-bold text-slate-800 dark:text-slate-100 group-hover:text-primary transition-colors" x-text="job.title"></h3>
+                                        <span x-show="job.type" x-text="job.type" class="text-[10px] font-semibold px-2 py-0.5 rounded-md border"
+                                              :class="job.type === 'Freelance' ? 'bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-800/50' : 'bg-emerald-50 text-emerald-600 border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-400 dark:border-emerald-800/50'"></span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400">
+                                        <i :class="job.type === 'Freelance' ? 'fa-regular fa-user' : 'fa-regular fa-building'"></i>
+                                        <span x-text="job.company"></span>
+                                    </div>
+                                </div>
+                                <div class="p-1.5 rounded-full bg-slate-50 dark:bg-slate-800 group-hover:bg-red-50 dark:group-hover:bg-slate-700 transition-colors mt-1 md:mt-0 shrink-0">
+                                    <svg class="w-4 h-4 md:w-5 md:h-5 text-slate-400 group-hover:text-primary transition-transform duration-300" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                     </svg>
                                 </div>
@@ -234,7 +244,7 @@
                                 <i class="fa-brands fa-github text-xl"></i>
                             </a>
                         </div>
-                        <a :href="project.link" target="_blank" class="text-lg font-bold mt-2 text-slate-800 dark:text-white hover:text-primary transition-colors">
+                        <a :href="project.link" target="_blank" class="text-lg font-bold mt-2 text-slate-800 dark:text-white hover:text-primary transition-colors flex items-center flex-wrap gap-2">
                             <span x-text="project.title"></span>
                             <span x-show="project.tag" x-text="project.tag" class="rounded text-[10px] font-semibold bg-red-50 dark:bg-red-900/20 text-primary dark:text-red-300 px-2 py-0.5 border border-red-100 dark:border-red-800/30"></span>
                         </a>
@@ -331,19 +341,23 @@
                 ],
                 experiences: [
                     {
-                        title: 'Wetopia',
-                        dotClass: 'border-red-200 dark:border-slate-900 bg-red-600',
-                        description: 'A Web-based app platform aimed at streamlining short-term rentals, similar to the Airbnb ecosystem.',
+                        title: 'Marine Fuel Monitoring System',
+                        company: 'Government of Jakarta',
+                        type: 'Freelance',
+                        dotClass: 'border-blue-300 dark:border-blue-500 bg-blue-600',
+                        description: 'A responsive and interactive web application for the Jakarta Department of Transportation.',
                         points: [
-                            'Built the Wetopia Admin, Owner, and Tenant portals from scratch using Laravel TALL Stack and Bubble.io.',
-                            'Developed core features to handle user roles, property listings, and booking management.',
-                            'Connect and synced data between the Laravel Admin dashboard and the Bubble.io Owner & Tenant portals.',
-                            'Integrated external services including Mixpanel (analytics), AWS S3 (storage), DocuSign, and Zendesk.',
-                            'Delivered a stable and scalable web application that meets business requirements.'
+                            'Built the system independently from scratch to digitize the end-to-end fuel management process.',
+                            'Developed a centralized ship database and a fuel sounding module to accurately track consumption.',
+                            'Implemented automated PDF generation for official reports, such as assignment letters and fuel requests.',
+                            'Created real-time dashboards for monitoring budgets, fuel operations, and supplier reconciliation.',
+                            'Tech Stack: Laravel, Livewire, MySQL, Tailwind CSS.'
                         ]
                     },
                     {
                         title: 'Property HUB',
+                        company: 'Far Capital',
+                        type: 'Full-time',
                         dotClass: 'border-red-200 dark:border-slate-900 bg-red-600',
                         description: 'A Web-based app platform to facilitating property buying, selling, agent management, signing document, etc.',
                         points: [
@@ -356,6 +370,8 @@
                     },
                     {
                         title: 'Matchbank',
+                        company: 'Far Capital',
+                        type: 'Full-time',
                         dotClass: 'border-red-200 dark:border-slate-900 bg-red-600',
                         description: 'A fintech solution designed to screen loan applicants and provide intelligent property financing recommendations.',
                         points: [
@@ -364,7 +380,21 @@
                             'Create custom setting flags to handle new feature Matchbank/Property HUB release smoothly.',
                             'Used the TALL stack to build a user-friendly interface for displaying financial results.',
                         ]
-                    }
+                    },
+                    {
+                        title: 'Wetopia',
+                        company: 'Far Capital',
+                        type: 'Full-time',
+                        dotClass: 'border-red-200 dark:border-slate-900 bg-red-600',
+                        description: 'A Web-based app platform aimed at streamlining short-term rentals, similar to the Airbnb ecosystem.',
+                        points: [
+                            'Built the Wetopia Admin, Owner, and Tenant portals from scratch using Laravel TALL Stack and Bubble.io.',
+                            'Developed core features to handle user roles, property listings, and booking management.',
+                            'Connect and synced data between the Laravel Admin dashboard and the Bubble.io Owner & Tenant portals.',
+                            'Integrated external services including Mixpanel (analytics), AWS S3 (storage), DocuSign, and Zendesk.',
+                            'Delivered a stable and scalable web application that meets business requirements.'
+                        ]
+                    },
                 ],
                 projects: [
                     {
@@ -382,15 +412,6 @@
                         link: 'https://financial.khoirony.fun/',
                         desc: 'A comprehensive financial management platform designed to track monthly cash flows, analyze detailed income and expense patterns, and provide strategic forecasting tools to support personal FIRE (Financial Independence, Retire Early) planning.',
                         stack: 'Laravel, Livewire, MySQL'
-                    },
-                    {
-                        title: 'Marine Fuel Monitoring System',
-                        icon: 'fa-solid fa-ship',
-                        github: 'https://github.com/khoirony', 
-                        link: 'https://bbmkapal-dishubjakarta.com',
-                        tag: 'Professional',
-                        desc: 'A responsive and interactive web application for the Jakarta Department of Transportation to manage ship databases, track fuel operations, generate automated PDF reports, and monitor real-time budgets.',
-                        stack: 'Laravel, Livewire, MySQL' 
                     },
                     {
                         title: 'Object Detection',
