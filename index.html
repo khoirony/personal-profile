@@ -117,8 +117,8 @@
                 <button @click="toggleTheme()" class="relative w-12 h-6 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 cursor-pointer shadow-inner" 
                         :class="darkMode ? 'bg-slate-700' : 'bg-slate-300'" aria-label="Toggle theme">
                     <span class="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transform transition-transform duration-300 flex items-center justify-center text-[12px]" 
-                          :class="darkMode ? 'translate-x-6' : 'translate-x-0'">
-                        <span x-text="darkMode ? '🌙' : '☀️'"></span>
+                        :class="darkMode ? 'translate-x-6' : 'translate-x-0'">
+                        <i :class="darkMode ? 'fa-solid fa-moon text-slate-700' : 'fa-solid fa-sun text-yellow-500'"></i>
                     </span>
                 </button>
             </div>
@@ -183,7 +183,9 @@
                     <div class="p-4 md:p-5 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-xl shadow border transition-all duration-300 hover:shadow-lg hover:scale-105" 
                          data-aos="fade-up" :data-aos-delay="index * 100">
                         <div class="flex items-center gap-2 md:gap-3 mb-2">
-                            <div class="py-1.5 px-2.5 md:py-2 md:px-3 rounded-lg text-sm md:text-base bg-slate-100 dark:bg-slate-700" x-text="skill.emoji"></div>
+                            <div class="py-1.5 px-2.5 md:py-2 md:px-3 rounded-lg text-sm md:text-base bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">
+                                <i :class="skill.icon"></i>
+                            </div>
                             <h3 class="text-sm md:text-lg font-semibold text-slate-800 dark:text-slate-200" x-text="skill.title"></h3>
                         </div>
                         <p class="text-slate-600 dark:text-slate-400 text-xs md:text-base" x-text="skill.desc"></p>
@@ -332,10 +334,10 @@
                     {icon: 'chart-pie', label: 'Finance', href: 'https://financial.khoirony.fun', id: 'finance'},
                 ],
                 skills: [
-                    { emoji: '📦', title: 'Frameworks & Tools', desc: 'Laravel, Livewire, AlpineJS, Tailwind, Unity, MySQL' },
-                    { emoji: '⚡', title: 'No-Code Tools', desc: 'Bubble, Make, n8n' },
-                    { emoji: '☁️', title: 'Cloud & Deployment', desc: 'CI/CD, VPS, Docker, AWS S3, Third-Party Integrations' },
-                    { emoji: '💪', title: 'Core Strengths', desc: 'Writing clean & maintainable code, Collaboration and teamwork' }
+                    { icon: 'fa-solid fa-cubes', title: 'Frameworks & Tools', desc: 'Laravel, Livewire, AlpineJS, Tailwind, Unity, MySQL' },
+                    { icon: 'fa-solid fa-bolt', title: 'No-Code Tools', desc: 'Bubble, Make, n8n' },
+                    { icon: 'fa-solid fa-cloud', title: 'Cloud & Deployment', desc: 'CI/CD, VPS, Docker, AWS S3, Third-Party Integrations' },
+                    { icon: 'fa-solid fa-dumbbell', title: 'Core Strengths', desc: 'Writing clean & maintainable code, Collaboration and teamwork' }
                 ],
                 experiences: [
                     {
@@ -380,7 +382,7 @@
                         icon: 'fa-solid fa-gamepad',
                         github: 'https://github.com/khoirony/game-kirim-paket',
                         link: 'https://game.khoirony.fun/',
-                        desc: 'My personal profile website but designed as a delivery-themed interactive game.',
+                        desc: 'An interactive personal portfolio website designed as a delivery-themed 2D game. Players navigate a customized virtual environment to explore my professional background, skills, and past projects in an engaging way.',
                         stack: 'Unity, C#'
                     },
                     {
@@ -388,8 +390,17 @@
                         icon: 'fa-solid fa-chart-pie',
                         github: 'https://github.com/khoirony/financial-report',
                         link: 'https://financial.khoirony.fun/',
-                        desc: 'A website to track my monthly financial cashflow, analyzing income and expenses, include FIRE planning.',
+                        desc: 'A comprehensive financial management platform designed to track monthly cash flows, analyze detailed income and expense patterns, and provide strategic forecasting tools to support personal FIRE (Financial Independence, Retire Early) planning.',
                         stack: 'Laravel, Livewire, MySQL'
+                    },
+                    {
+                        title: 'Marine Fuel Monitoring System',
+                        icon: 'fa-solid fa-ship',
+                        github: 'https://github.com/khoirony', 
+                        link: 'https://bbmkapal-dishubjakarta.com',
+                        tag: 'Professional',
+                        desc: 'A responsive and interactive web application for the Jakarta Department of Transportation to manage ship databases, track fuel operations, generate automated PDF reports, and monitor real-time budgets.',
+                        stack: 'Laravel, Livewire, MySQL' 
                     },
                     {
                         title: 'Object Detection',
@@ -397,7 +408,7 @@
                         github: 'https://github.com/khoirony/tensorflow-js',
                         link: 'https://tensorflow.khoirony.fun/',
                         tag: 'Learning',
-                        desc: 'Real-time object detection using TensorFlow.js and webcam to practice Computer Vision.',
+                        desc: 'An experimental web application leveraging TensorFlow.js and webcam integration to perform real-time object detection directly within the browser, built to explore and practice foundational concepts in modern Computer Vision.',
                         stack: 'Tailwind, Tensorflow JS'
                     }
                 ],
