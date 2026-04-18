@@ -18,12 +18,6 @@
     <meta property="og:description" content="Portfolio of Khoirony Arief, a Software Engineer based in Bandung, Indonesia specializing in TALL Stack.">
     <meta property="og:image" content="https://khoirony.fun/src/img/rony.jpg">
 
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://khoirony.fun/">
-    <meta property="twitter:title" content="Khoirony Arief – Software Engineer">
-    <meta property="twitter:description" content="Portfolio of Khoirony Arief, a Software Engineer based in Bandung, Indonesia specializing in TALL Stack.">
-    <meta property="twitter:image" content="https://khoirony.fun/src/img/rony.jpg">
-
     <link rel="icon" href="src/img/favicon.ico" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,40 +49,19 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Khoirony Arief",
-      "url": "https://khoirony.fun/",
-      "image": "https://khoirony.fun/src/img/rony.jpg",
-      "jobTitle": "Software Engineer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Far Capital"
-      },
-      "alumniOf": "Bachelor of Informatics Engineering",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Bandung",
-        "addressCountry": "ID"
-      },
-      "sameAs": [
-        "https://github.com/khoirony",
-        "https://www.linkedin.com/in/khoirony-arief/",
-        "https://instagram.com/khoirony_arief"
-      ]
-    }
-    </script>
 </head>
 
-<body class="bg-slate-50 text-slate-600 dark:bg-slate-900 dark:text-slate-400 transition-colors duration-300 pb-24 md:pb-0"
+<body class="relative bg-slate-50/50 text-slate-600 dark:bg-slate-900 dark:text-slate-400 transition-colors duration-300 pb-24 md:pb-0 z-0"
     x-data="portfolio()"
     x-init="initApp()"
     :class="{ 'dark': darkMode }">
 
-    <nav class="bg-white/90 dark:bg-slate-900/85 backdrop-blur-xl fixed top-0 left-0 w-full z-50 border-b border-slate-200 dark:border-slate-800/50 transition-colors duration-300">
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] rounded-full bg-red-400/20 mix-blend-multiply filter blur-[120px] dark:bg-red-900/10 dark:mix-blend-normal transition-all duration-500"></div>
+        <div class="absolute top-[20%] -right-[10%] w-[40%] h-[50%] rounded-full bg-blue-300/20 mix-blend-multiply filter blur-[120px] dark:bg-blue-900/10 dark:mix-blend-normal transition-all duration-500"></div>
+    </div>
+
+    <nav class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl fixed top-0 left-0 w-full z-50 border-b border-slate-200/60 dark:border-slate-800/50 transition-colors duration-300 shadow-sm dark:shadow-none">
         <div class="flex max-w-screen-xl items-center justify-between mx-auto px-5 py-3 md:p-4">
             <a href="/" class="flex items-center group">
                 <span class="md:inline self-center text-2xl font-semibold whitespace-nowrap ml-2 text-slate-900 dark:text-white transition-colors duration-300 group-hover:text-primary">Khoirony Arief</span>
@@ -99,24 +72,27 @@
                     <template x-for="item in navItems">
                         <li>
                             <a :href="item.href" 
-                               class="block py-2 px-3 transition-colors hover:text-primary dark:hover:text-red-400"
-                               :class="activeSection === item.id ? 'text-primary dark:text-red-400 font-bold' : 'text-slate-700 dark:text-slate-300'"
-                               x-text="item.label"></a>
+                               class="block py-2 px-3 transition-colors hover:text-primary dark:hover:text-red-400 relative group"
+                               :class="activeSection === item.id ? 'text-primary dark:text-red-400 font-semibold' : 'text-slate-600 dark:text-slate-300'">
+                               <span x-text="item.label"></span>
+                               <span class="absolute -bottom-1 left-1/2 w-1/2 h-[2px] bg-primary rounded-full transform -translate-x-1/2 transition-all duration-300"
+                                     :class="activeSection === item.id ? 'opacity-100 scale-100' : 'opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100'"></span>
+                            </a>
                         </li>
                     </template>
                 </ul>
             </div>
 
             <div class="flex items-center gap-4">
-                <div class="hidden md:flex items-center gap-3">
-                    <a href="https://github.com/khoirony" target="_blank" aria-label="Github Profile" class="hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-github text-[20px]"></i></a>
-                    <a href="https://instagram.com/khoirony_arief" target="_blank" aria-label="Instagram Profile" class="hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-instagram text-[20px]"></i></a>
-                    <a href="https://www.linkedin.com/in/khoirony-arief/" target="_blank" aria-label="LinkedIn Profile" class="hover:text-slate-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-linkedin-in text-[20px]"></i></a>
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="https://github.com/khoirony" target="_blank" aria-label="Github Profile" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors transform hover:scale-110"><i class="fa-brands fa-github text-[20px]"></i></a>
+                    <a href="https://instagram.com/khoirony_arief" target="_blank" aria-label="Instagram Profile" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors transform hover:scale-110"><i class="fa-brands fa-instagram text-[20px]"></i></a>
+                    <a href="https://www.linkedin.com/in/khoirony-arief/" target="_blank" aria-label="LinkedIn Profile" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors transform hover:scale-110"><i class="fa-brands fa-linkedin-in text-[20px]"></i></a>
                 </div>
 
-                <button @click="toggleTheme()" class="relative w-12 h-6 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 cursor-pointer shadow-inner" 
-                        :class="darkMode ? 'bg-slate-700' : 'bg-slate-300'" aria-label="Toggle theme">
-                    <span class="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transform transition-transform duration-300 flex items-center justify-center text-[12px]" 
+                <button @click="toggleTheme()" class="relative w-12 h-6 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600 cursor-pointer shadow-inner border border-slate-200 dark:border-slate-700" 
+                        :class="darkMode ? 'bg-slate-800' : 'bg-slate-100'" aria-label="Toggle theme">
+                    <span class="absolute top-[1px] left-[2px] w-5 h-5 rounded-full bg-white dark:bg-slate-300 shadow transform transition-transform duration-300 flex items-center justify-center text-[11px]" 
                         :class="darkMode ? 'translate-x-6' : 'translate-x-0'">
                         <i :class="darkMode ? 'fa-solid fa-moon text-slate-700' : 'fa-solid fa-sun text-yellow-500'"></i>
                     </span>
@@ -128,46 +104,50 @@
     <main>
         <section id="home" class="overflow-hidden relative min-h-[85vh] md:min-h-screen flex items-center">
             <div class="md:max-w-screen-sm mx-auto px-6 md:px-5 w-full text-center pt-20 md:pt-0">
-                <h1 class="font-bold text-3xl sm:text-4xl md:text-6xl mb-4 md:mb-10 min-h-[60px] md:min-h-[80px]">
+                <div class="inline-block py-1 px-3 rounded-full bg-red-50 text-primary dark:bg-red-900/20 dark:text-red-300 text-xs font-semibold tracking-wider mb-6 border border-red-100 dark:border-red-900/30 shadow-sm" data-aos="fade-down">
+                    AVAILABLE FOR OPPORTUNITIES
+                </div>
+                <h1 class="font-bold text-4xl sm:text-5xl md:text-6xl mb-4 md:mb-8 min-h-[60px] md:min-h-[80px] tracking-tight">
                     <span class="sr-only">Khoirony Arief - Software Engineer</span>
                     <span aria-hidden="true" x-text="typewriterText" class="text-slate-900 dark:text-white"></span>
                     <span aria-hidden="true" class="cursor-blink text-primary">|</span>
                 </h1>
-                <p class="font-light text-sm sm:text-base md:text-xl mb-8 md:mb-10 leading-relaxed text-slate-600 dark:text-slate-300">
-                    I'm a software engineer based in Bandung, Indonesia, working for a Malaysian property company. I'm passionate about crafting impactful software and have contributed to projects that help shape the way people interact with property technology.
-                    <br class="hidden md:block">Wanna discuss about something?
+                <p class="font-light text-base md:text-xl mb-8 md:mb-10 leading-relaxed text-slate-600 dark:text-slate-400">
+                    I'm a software engineer based in Bandung, Indonesia, working for a Malaysian property company. I'm passionate about crafting impactful software and shaping the way people interact with property technology.
                 </p>
-                <div class="mt-8 md:mt-12 flex flex-col sm:flex-row justify-center gap-3 sm:gap-5 px-4 md:px-8">
-                    <a href="#contact" class="rounded-full py-3 px-8 text-sm md:text-base bg-blue-600 text-white transition-all duration-300 hover:bg-blue-700 hover:-translate-y-1 hover:shadow-lg text-center">Let's Talk!</a>
-                    <a href="https://game.khoirony.fun" class="rounded-full py-3 px-8 text-sm md:text-base bg-primary text-white transition-all duration-300 hover:bg-red-700 hover:-translate-y-1 hover:shadow-lg text-center">Try Game Version!</a>
+                <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4 px-4 md:px-8">
+                    <a href="#contact" class="rounded-full py-3.5 px-8 text-sm md:text-base bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/20 dark:hover:shadow-white/10 text-center">Let's Talk!</a>
+                    <a href="https://game.khoirony.fun" class="rounded-full py-3.5 px-8 text-sm md:text-base bg-primary text-white font-medium transition-all duration-300 hover:bg-red-700 hover:-translate-y-1 hover:shadow-xl hover:shadow-red-500/30 text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-gamepad"></i> Try Game Version!
+                    </a>
                 </div>
             </div>
         </section>
 
         <section id="about" class="max-w-screen-lg mx-auto px-6 md:px-8 pt-20 md:pt-32">
             <div data-aos="fade-up">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-slate-900 dark:text-white">/ about me</h2>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">/ about me</h2>
             </div>
-            <div class="flex flex-col md:flex-row items-center md:gap-10 mt-6 md:mt-8">
+            <div class="flex flex-col md:flex-row items-center md:gap-12 mt-8">
                 <div class="hidden md:flex w-1/3" data-aos="fade-right" data-aos-delay="200">
-                    <img src="/src/img/rony.jpg" onerror="this.style.display='none'" alt="Khoirony Arief - Software Engineer in Bandung" class="rounded-lg object-cover w-full shadow-lg">
-                    <div class="hidden w-full h-64 bg-slate-200 dark:bg-slate-800 rounded-lg flex items-center justify-center text-xs">Image Placeholder</div>
+                    <div class="relative group">
+                        <div class="absolute -inset-2 bg-gradient-to-r from-red-400 to-blue-400 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+                        <img src="/src/img/rony.jpg" onerror="this.style.display='none'" alt="Khoirony Arief" class="relative rounded-2xl object-cover w-full shadow-lg border border-white dark:border-slate-800">
+                    </div>
                 </div>
-                <div class="md:w-2/3 w-full" data-aos="fade-left" data-aos-delay="300">
+                <div class="md:w-2/3 w-full text-slate-600 dark:text-slate-400" data-aos="fade-left" data-aos-delay="300">
                     <p class="font-light text-sm md:text-base leading-relaxed">
-                        I am currently a Software Engineer at Far Capital, Working in Project PropertyHub, Bachelor of Informatics Engineering, have experience 3 years as a web developer, currently stack is <span class="font-semibold text-primary">Tailwind, AlpineJs, Laravel, Livewire</span> a.k.a <span class="font-semibold text-primary">TALL Stack</span> and <span class="font-semibold text-primary">Bubble.io.</span>
+                        I am currently a Software Engineer at Far Capital, Working in Project PropertyHub, Bachelor of Informatics Engineering, have experience 3 years as a web developer, currently stack is <span class="font-medium text-slate-900 dark:text-white bg-red-50 dark:bg-red-900/20 px-1 rounded text-primary">Tailwind, AlpineJs, Laravel, Livewire</span> a.k.a <span class="font-medium text-slate-900 dark:text-white text-primary">TALL Stack</span> and <span class="font-medium text-slate-900 dark:text-white text-primary">Bubble.io.</span>
                     </p>
-                    <p class="font-light text-sm md:text-base mt-3 md:mt-4 leading-relaxed">
+                    <p class="font-light text-sm md:text-base mt-4 leading-relaxed">
                         Fast Learner, Enjoy learning new things, especially in the programming fields and wants to become a professional software developer.
                     </p>
-                    <p class="font-light text-sm md:text-base mt-3 md:mt-4 leading-relaxed">
+                    <p class="font-light text-sm md:text-base mt-4 leading-relaxed">
                         And outside of work, I am also interested in Gym, Economics, and Game Dev.
                     </p>
 
-                    <a href="/src/docs/CV_KhoironyArief.pdf" download="Khoirony_Arief_CV.pdf" class="inline-flex items-center gap-2 mt-6 md:mt-8 px-5 py-2.5 text-sm font-medium text-white bg-slate-900 rounded-lg hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 transition-colors duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                        </svg>
+                    <a href="/src/docs/CV_KhoironyArief.pdf" download="Khoirony_Arief_CV.pdf" class="inline-flex items-center gap-2 mt-8 px-6 py-3 text-sm font-medium text-slate-700 bg-white border border-slate-200 rounded-full shadow-sm hover:bg-slate-50 hover:text-primary dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-700 transition-all duration-300 hover:shadow-md">
+                        <i class="fa-solid fa-download"></i>
                         Download CV
                     </a>
                 </div>
@@ -176,51 +156,53 @@
 
         <section id="skill" class="max-w-screen-lg mx-auto px-6 md:px-8 pt-20 md:pt-32">
             <div class="flex" data-aos="fade-up">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 md:mb-10 text-slate-900 dark:text-white">/ current skill</h2>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-slate-900 dark:text-white tracking-tight">/ current skill</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <template x-for="(skill, index) in skills">
-                    <div class="p-4 md:p-5 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-xl shadow border transition-all duration-300 hover:shadow-lg hover:scale-105" 
+                    <div class="group p-5 md:p-6 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-slate-100 dark:border-slate-700/60 rounded-2xl shadow-sm border transition-all duration-300 hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-slate-900/50 hover:-translate-y-1" 
                          data-aos="fade-up" :data-aos-delay="index * 100">
-                        <div class="flex items-center gap-2 md:gap-3 mb-2">
-                            <div class="py-1.5 px-2.5 md:py-2 md:px-3 rounded-lg text-sm md:text-base bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">
-                                <i :class="skill.icon"></i>
+                        <div class="flex items-center gap-3 md:gap-4 mb-3">
+                            <div class="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-xl bg-red-50 dark:bg-slate-700/50 text-primary dark:text-slate-200 transition-colors group-hover:bg-primary group-hover:text-white">
+                                <i :class="skill.icon + ' text-lg'"></i>
                             </div>
-                            <h3 class="text-sm md:text-lg font-semibold text-slate-800 dark:text-slate-200" x-text="skill.title"></h3>
+                            <h3 class="text-base md:text-lg font-semibold text-slate-800 dark:text-slate-100" x-text="skill.title"></h3>
                         </div>
-                        <p class="text-slate-600 dark:text-slate-400 text-xs md:text-base" x-text="skill.desc"></p>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm md:text-base leading-relaxed pl-[3.25rem]" x-text="skill.desc"></p>
                     </div>
                 </template>
             </div>
         </section>
 
         <section id="experience" class="max-w-screen-lg mx-auto px-6 md:px-8 overflow-hidden pt-20 md:pt-32">
-            <div class="mb-8 md:mb-12" data-aos="fade-up">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-3 md:mb-4 text-slate-900 dark:text-white">/ working experience</h2>
-                <p class="text-slate-600 dark:text-slate-400 max-w-2xl text-sm md:text-base">
+            <div class="mb-10 md:mb-14" data-aos="fade-up">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white tracking-tight">/ working experience</h2>
+                <p class="text-slate-500 dark:text-slate-400 max-w-2xl text-sm md:text-base leading-relaxed">
                     I have been working as a software engineer, contributing to the development and improvement of web applications across various projects under <span class="text-primary font-semibold">Far Capital</span>.
                 </p>
             </div>
 
-            <div class="px-0 md:px-4">
-                <div class="relative border-l-2 border-slate-200 dark:border-slate-800 pl-6 md:pl-8 space-y-6 md:space-y-10 ml-2 md:ml-3">
+            <div class="px-2 md:px-4">
+                <div class="relative border-l-2 border-slate-200 dark:border-slate-700/80 pl-6 md:pl-10 space-y-8 md:space-y-12 ml-2 md:ml-3">
                     <template x-for="(job, index) in experiences">
-                        <div x-data="{ open: false }" data-aos="fade-right" :data-aos-delay="100 + (index * 50)" class="relative">
-                            <div class="absolute -left-[33px] md:-left-[41px] top-1.5 h-4 w-4 md:h-5 md:w-5 rounded-full border-4"
-                                 :class="'border-[#0f172a] bg-slate-700 dark:border-white dark:bg-slate-900'"></div>
+                        <div x-data="{ open: false }" data-aos="fade-right" :data-aos-delay="100 + (index * 50)" class="relative group">
+                            <div class="absolute -left-[33px] md:-left-[49px] top-1.5 h-4 w-4 md:h-5 md:w-5 rounded-full border-4 shadow-sm transition-colors duration-300"
+                                 :class="[job.dotClass, open ? 'ring-4 ring-red-100 dark:ring-red-900/30' : '']"></div>
                             
-                            <button @click="open = !open" class="flex items-center justify-between w-full text-left group select-none">
-                                <h3 class="text-base md:text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors pr-2" x-text="job.title"></h3>
-                                <svg class="w-4 h-4 md:w-5 md:h-5 text-slate-600 dark:text-slate-400 transition-transform duration-300 shrink-0" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                                </svg>
+                            <button @click="open = !open" class="flex items-center justify-between w-full text-left select-none bg-transparent outline-none">
+                                <h3 class="text-lg md:text-2xl font-bold text-slate-800 dark:text-slate-100 group-hover:text-primary transition-colors pr-2" x-text="job.title"></h3>
+                                <div class="p-1.5 rounded-full bg-slate-50 dark:bg-slate-800 group-hover:bg-red-50 dark:group-hover:bg-slate-700 transition-colors">
+                                    <svg class="w-4 h-4 md:w-5 md:h-5 text-slate-400 group-hover:text-primary transition-transform duration-300 shrink-0" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </div>
                             </button>
 
-                            <div x-show="open" x-collapse class="mt-3 md:mt-4 text-slate-600 dark:text-slate-400">
+                            <div x-show="open" x-collapse class="mt-4 text-slate-600 dark:text-slate-400">
                                 <template x-if="job.description">
-                                    <p class="text-sm md:text-base" x-text="job.description"></p>
+                                    <p class="text-sm md:text-base leading-relaxed mb-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50" x-text="job.description"></p>
                                 </template>
-                                <ul class="list-disc pl-4 md:pl-5 space-y-2 leading-relaxed marker:text-red-600 text-sm md:text-base">
+                                <ul class="list-disc pl-5 md:pl-6 space-y-2.5 leading-relaxed marker:text-slate-300 dark:marker:text-slate-600 text-sm md:text-base">
                                     <template x-for="point in job.points">
                                         <li x-text="point"></li>
                                     </template>
@@ -233,49 +215,57 @@
         </section>
 
         <section id="project" class="max-w-screen-lg mx-auto px-6 md:px-8 pt-20 md:pt-32">
-            <div class="mb-6 md:mb-10" data-aos="fade-up">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-2 text-slate-900 dark:text-white">/ weekend projects</h2>
-                <p class="text-sm md:text-base text-slate-600 dark:text-slate-400">Side projects I work on during weekends.</p>
+            <div class="mb-10" data-aos="fade-up">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 text-slate-900 dark:text-white tracking-tight">/ weekend projects</h2>
+                <p class="text-sm md:text-base text-slate-500 dark:text-slate-400">Side projects I work on during weekends.</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
                 <template x-for="(project, index) in projects">
-                    <div class="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 border p-5 md:p-6 rounded-xl shadow transition duration-300 hover:shadow-lg hover:-translate-y-2 flex flex-col" 
+                    <div class="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-slate-100 dark:border-slate-700/60 border p-6 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-slate-900/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col relative overflow-hidden" 
                          data-aos="fade-up" :data-aos-delay="index * 100">
-                        <div class="flex justify-between items-start mb-6 md:mb-8">
-                            <div><i :class="project.icon + ' text-xl md:text-2xl text-green-400'"></i></div>
-                            <a :href="project.github" target="_blank" class="text-gray-400 hover:text-slate-900 dark:hover:text-white">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-slate-50 dark:bg-slate-700/50 group-hover:bg-red-50 dark:group-hover:bg-primary/20 transition-colors">
+                                <i :class="project.icon + ' text-xl text-slate-600 dark:text-slate-300 group-hover:text-primary'"></i>
+                            </div>
+                            <a :href="project.github" target="_blank" class="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" x-show="project.github">
                                 <i class="fa-brands fa-github text-xl"></i>
                             </a>
                         </div>
-                        <a :href="project.link" target="_blank" class="text-base md:text-lg font-semibold mt-4 text-slate-900 dark:text-white hover:text-primary">
+                        <a :href="project.link" target="_blank" class="text-lg font-bold mt-2 text-slate-800 dark:text-white hover:text-primary transition-colors">
                             <span x-text="project.title"></span>
-                            <span x-show="project.tag" x-text="project.tag" class="rounded-md text-[10px] font-medium bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-500 px-2 py-0.5 ml-2"></span>
+                            <span x-show="project.tag" x-text="project.tag" class="rounded text-[10px] font-semibold bg-red-50 dark:bg-red-900/20 text-primary dark:text-red-300 px-2 py-0.5 border border-red-100 dark:border-red-800/30"></span>
                         </a>
-                        <p class="text-gray-500 dark:text-slate-400 text-xs md:text-sm mt-2 leading-relaxed flex-grow" x-text="project.desc"></p>
-                        <p class="text-gray-500 text-xs mt-3 md:mt-4 border-t border-slate-100 dark:border-slate-700 pt-3" x-text="project.stack"></p>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mt-3 leading-relaxed flex-grow" x-text="project.desc"></p>
+                        <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-700/50">
+                            <p class="text-slate-400 font-mono text-xs font-medium" x-text="project.stack"></p>
+                        </div>
                     </div>
                 </template>
             </div>
         </section>
 
-        <section id="contact" class="pt-20 md:pt-32 pb-10">
+        <section id="contact" class="pt-20 md:pt-32 pb-16">
             <div class="max-w-screen-lg mx-auto px-6 md:px-8">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 md:mb-10 text-slate-900 dark:text-white">/ get in touch</h2>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-slate-900 dark:text-white tracking-tight text-center md:text-left">/ get in touch</h2>
 
                 <div class="flex-1 flex justify-center w-full">
-                    <div class="w-full md:w-1/2">
-                        <p class="font-light text-center text-sm md:text-base text-slate-600 dark:text-slate-400">
+                    <div class="w-full md:w-1/2 bg-white/50 dark:bg-slate-800/30 backdrop-blur-sm p-6 md:p-8 rounded-3xl border border-slate-100 dark:border-slate-700/50 shadow-sm">
+                        <p class="font-light text-center text-sm md:text-base text-slate-600 dark:text-slate-400 mb-8">
                             Interesting in working together? <br>
                             Feel free to contact me for any project or collaboration.
                         </p>
 
-                        <form action="https://formspree.io/f/mjvlvlwq" method="POST" class="w-full mt-8 space-y-4">
-                            <input type="text" name="name" placeholder="Full Name" required class="w-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-lg px-4 py-3 outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all">
-                            <input type="email" name="email" placeholder="Your Email" required class="w-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-lg px-4 py-3 outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all">
-                            <textarea name="message" rows="4" placeholder="Message" required class="w-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-lg px-4 py-3 outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"></textarea>
-                            <div class="flex justify-center pt-2">
-                                <button type="submit" class="w-full sm:w-auto bg-primary text-white px-12 py-3 rounded-full cursor-pointer transition-all duration-300 hover:bg-red-700 hover:-translate-y-1 hover:shadow-lg font-medium">Send Message</button>
+                        <form action="https://formspree.io/f/mjvlvlwq" method="POST" class="w-full space-y-4">
+                            <input type="text" name="name" placeholder="Full Name" required class="w-full bg-white dark:bg-slate-900/50 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-xl px-5 py-3.5 outline-none focus:border-primary focus:ring-2 focus:ring-red-500/20 transition-all shadow-sm">
+                            <input type="email" name="email" placeholder="Your Email" required class="w-full bg-white dark:bg-slate-900/50 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-xl px-5 py-3.5 outline-none focus:border-primary focus:ring-2 focus:ring-red-500/20 transition-all shadow-sm">
+                            <textarea name="message" rows="4" placeholder="Message" required class="w-full bg-white dark:bg-slate-900/50 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-xl px-5 py-3.5 outline-none focus:border-primary focus:ring-2 focus:ring-red-500/20 transition-all shadow-sm resize-none"></textarea>
+                            <div class="flex justify-center pt-4">
+                                <button type="submit" class="w-full sm:w-auto bg-primary text-white px-12 py-3.5 rounded-full cursor-pointer transition-all duration-300 hover:bg-red-700 hover:-translate-y-1 hover:shadow-xl hover:shadow-red-500/30 font-medium flex items-center justify-center gap-2">
+                                    <i class="fa-regular fa-paper-plane"></i> Send Message
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -284,18 +274,18 @@
         </section>
     </main>
 
-    <footer class="max-w-screen-lg mx-auto px-6 md:px-8 text-center font-light text-sm pb-20 md:pb-10 pt-10 text-slate-500 dark:text-slate-400">
-        <p class="mb-1">Developed by <span class="font-medium text-slate-700 dark:text-slate-200">Khoirony Arief</span></p>
+    <footer class="max-w-screen-lg mx-auto px-6 md:px-8 text-center font-light text-sm pb-24 md:pb-12 pt-12 border-t border-slate-200/60 dark:border-slate-800 text-slate-500 dark:text-slate-400">
+        <p class="mb-1">Developed by <span class="font-semibold text-slate-700 dark:text-slate-200">Khoirony Arief</span></p>
         <p>&copy; <span x-text="new Date().getFullYear()"></span> All Rights Reserved</p>
     </footer>
 
-    <nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800/50 z-40 px-2 py-3">
+    <nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800/50 z-40 px-2 py-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] dark:shadow-none">
         <div class="flex items-center justify-around">
             <template x-for="item in navItemsMobile.filter(i => i.label !== 'Skills')">
-                <a :href="item.href" class="flex flex-col items-center gap-1 transition-colors"
-                   :class="activeSection === item.id ? 'text-primary dark:text-red-400' : 'text-slate-500 dark:text-slate-400 hover:text-primary'">
-                    <i :class="`fa-solid fa-${item.icon} text-lg`"></i>
-                    <span class="text-[10px]" x-text="item.label"></span>
+                <a :href="item.href" class="flex flex-col items-center gap-1 transition-colors relative w-14"
+                   :class="activeSection === item.id ? 'text-primary dark:text-red-400' : 'text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300'">
+                    <i :class="`fa-solid fa-${item.icon} text-lg mb-0.5`" :class="activeSection === item.id ? 'transform scale-110 transition-transform' : ''"></i>
+                    <span class="text-[10px] font-medium" x-text="item.label"></span>
                 </a>
             </template>
         </div>
@@ -342,7 +332,7 @@
                 experiences: [
                     {
                         title: 'Wetopia',
-                        dotClass: 'border-slate-900 dark:border-white bg-white dark:bg-slate-900',
+                        dotClass: 'border-red-200 dark:border-slate-900 bg-red-600',
                         description: 'A Web-based app platform aimed at streamlining short-term rentals, similar to the Airbnb ecosystem.',
                         points: [
                             'Built the Wetopia Admin, Owner, and Tenant portals from scratch using Laravel TALL Stack and Bubble.io.',
@@ -354,7 +344,7 @@
                     },
                     {
                         title: 'Property HUB',
-                        dotClass: 'border-slate-50 dark:border-slate-900 bg-red-600',
+                        dotClass: 'border-red-200 dark:border-slate-900 bg-red-600',
                         description: 'A Web-based app platform to facilitating property buying, selling, agent management, signing document, etc.',
                         points: [
                             'Planned and developed the entire system (Admin, Client, Agent, and Public portals) using the Laravel TALL Stack.',
@@ -366,7 +356,7 @@
                     },
                     {
                         title: 'Matchbank',
-                        dotClass: 'border-slate-50 dark:border-slate-900 bg-red-600',
+                        dotClass: 'border-red-200 dark:border-slate-900 bg-red-600',
                         description: 'A fintech solution designed to screen loan applicants and provide intelligent property financing recommendations.',
                         points: [
                             'Create Connection and synced data from Matchbank to Property HUB Apps securely.',
