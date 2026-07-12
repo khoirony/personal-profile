@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Blog - Khoirony Arief | Software Engineer</title>
+    <meta name="title" content="Blog - Khoirony Arief | Software Engineer">
+    <meta name="description" content="Kumpulan artikel teknis, tutorial, dan studi kasus seputar Software Engineering, Backend Development, dan TALL Stack oleh Khoirony Arief.">
+    <meta name="author" content="Khoirony Arief">
+    
+    <link rel="canonical" href="https://khoirony.com/blogs">
+
+    <link rel="icon" href="/src/img/favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script defer src="https://kit.fontawesome.com/c12c059ff2.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { poppins: ['Poppins', 'sans-serif'] },
+                    colors: { primary: '#dc2626' }
+                }
+            }
+        }
+    </script>
+    <style>
+        [x-cloak] { display: none !important; }
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="relative bg-slate-50 text-slate-600 dark:bg-slate-900 dark:text-slate-400 transition-colors duration-300 pb-24 md:pb-0 z-0"
+    x-data="{ darkMode: localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) }"
+    x-init="$watch('darkMode', val => { localStorage.setItem('theme', val ? 'dark' : 'light'); val ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark'); }); if(darkMode) document.documentElement.classList.add('dark');"
+    :class="{ 'dark': darkMode }">
+
+    <!-- Background Effects -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] rounded-full bg-red-400/20 mix-blend-multiply filter blur-[120px] dark:bg-red-900/10 dark:mix-blend-normal transition-all duration-500"></div>
+        <div class="absolute top-[20%] -right-[10%] w-[40%] h-[50%] rounded-full bg-blue-300/20 mix-blend-multiply filter blur-[120px] dark:bg-blue-900/10 dark:mix-blend-normal transition-all duration-500"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl fixed top-0 left-0 w-full z-50 border-b border-slate-200/60 dark:border-slate-800/50 transition-colors duration-300 shadow-sm dark:shadow-none">
+        <div class="flex max-w-screen-xl items-center justify-between mx-auto px-5 py-3 md:p-4">
+            <a href="/" class="flex items-center group">
+                <span class="md:inline self-center text-2xl font-semibold whitespace-nowrap ml-2 text-slate-900 dark:text-white transition-colors duration-300 group-hover:text-primary">Khoirony Arief</span>
+            </a>
+            
+            <div class="flex items-center gap-4">
+                <a href="/" class="hidden md:block text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-red-400 mr-4 transition-colors">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> Back to Portfolio
+                </a>
+                <button @click="darkMode = !darkMode" class="relative w-12 h-6 rounded-full transition-colors duration-300 focus:outline-none cursor-pointer border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800" aria-label="Toggle theme">
+                    <span class="absolute top-[1px] left-[2px] w-5 h-5 rounded-full bg-white dark:bg-slate-300 shadow transform transition-transform duration-300 flex items-center justify-center text-[11px]" :class="darkMode ? 'translate-x-6' : 'translate-x-0'">
+                        <i :class="darkMode ? 'fa-solid fa-moon text-slate-700' : 'fa-solid fa-sun text-yellow-500'"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-screen-lg mx-auto px-6 md:px-8 pt-32 pb-20 min-h-screen">
+        <div class="mb-12">
+            <a href="/" class="md:hidden text-sm font-medium text-primary mb-6 inline-block"><i class="fa-solid fa-arrow-left mr-2"></i> Back to Portfolio</a>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight mb-4">/ technical articles</h1>
+            <p class="text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-2xl leading-relaxed">
+                Tulisan seputar backend development, optimasi database, TALL stack, dan jurnal perjalanan saya sebagai Software Engineer.
+            </p>
+        </div>
+
+        <!-- Blog Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            
+            <!-- Article 1 (Yang sudah kita buat) -->
+            <a href="/blogs/optimasi-loading-data-besar" class="group flex flex-col bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200/80 dark:border-slate-700/60 p-6 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-slate-900/50 hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="bg-red-50 text-primary dark:bg-red-900/20 dark:text-red-300 text-[10px] font-semibold px-2 py-0.5 rounded border border-red-100 dark:border-red-900/30">Backend</span>
+                    <span class="bg-slate-100 text-slate-600 dark:bg-slate-700/50 dark:text-slate-300 text-[10px] font-semibold px-2 py-0.5 rounded border border-slate-200 dark:border-slate-700/50">Laravel</span>
+                </div>
+                
+                <h2 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors leading-snug mb-3">
+                    Strategi Optimasi Query: Menangani Jutaan Data di Multi-Database & Ratusan Tabel
+                </h2>
+                
+                <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+                    Panduan teknis Backend Engineer menangani bottleneck performa pada arsitektur multi-database (3 DB, 150 Tabel) menggunakan Laravel TALL Stack dan Query Builder.
+                </p>
+                
+                <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100 dark:border-slate-700/50 text-xs font-medium text-slate-400">
+                    <span>July 13, 2026</span>
+                    <span class="flex items-center gap-1 group-hover:text-primary transition-colors">Read article <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+                </div>
+            </a>
+
+            <!-- Article 2 (Draft / Placeholder untuk ke depannya) -->
+            <div class="group flex flex-col bg-slate-50/50 dark:bg-slate-800/30 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/30 p-6 rounded-2xl relative overflow-hidden opacity-75">
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="bg-slate-100 text-slate-500 dark:bg-slate-700/50 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded border border-slate-200 dark:border-slate-700/50">Draft</span>
+                    <span class="bg-slate-100 text-slate-500 dark:bg-slate-700/50 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded border border-slate-200 dark:border-slate-700/50">TALL Stack</span>
+                </div>
+                
+                <h2 class="text-xl font-bold text-slate-700 dark:text-slate-300 leading-snug mb-3">
+                    Membangun Aplikasi Property Real-Time dengan Livewire & Alpine.js
+                </h2>
+                
+                <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+                    Studi kasus bagaimana menggantikan Vue.js/React dengan Livewire untuk menghemat waktu development tanpa mengorbankan reaktivitas UI.
+                </p>
+                
+                <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100 dark:border-slate-700/50 text-xs font-medium text-slate-400">
+                    <span>Coming Soon</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="max-w-screen-lg mx-auto px-6 md:px-8 text-center font-light text-sm pb-12 pt-12 border-t border-slate-200/60 dark:border-slate-800 text-slate-500 dark:text-slate-400">
+        <p class="mb-1">Developed by <span class="font-semibold text-slate-700 dark:text-slate-200">Khoirony Arief</span></p>
+        <p>&copy; 2026 All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>
